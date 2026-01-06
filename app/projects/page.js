@@ -20,7 +20,7 @@ export default function Projects() {
     },
     "dateCreated": "2023-04",
     "dateModified": "2024-07",
-    "url": "https://github.com/saurava69//ChatWave",
+    "url": "https://github.com/Saurava69/realtime-chat-app",
     "programmingLanguage": ["JavaScript", "Node.js", "React"],
     "keywords": ["real-time chat", "websockets", "socket.io", "full stack", "react", "node.js"]
   };
@@ -48,7 +48,7 @@ export default function Projects() {
               </div>
               <div className="flex items-center space-x-4 mt-4 md:mt-0">
                 <a
-                  href="https://github.com/saurava69//ChatWave"
+                  href="https://github.com/Saurava69/realtime-chat-app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors text-sm"

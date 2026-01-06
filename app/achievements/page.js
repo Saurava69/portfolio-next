@@ -22,8 +22,14 @@ export default function Achievements() {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "NTSE Qualified District Topper",
-        "description": "Qualified National Talent Search Examination as District Topper in Class 10"
+        "name": "NTSE Qualified",
+        "description": "Qualified National Talent Search Examination conducted by NCERT"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "District Topper - Class 10 CBSE",
+        "description": "Secured District Topper position in Class 10 CBSE Board Examination"
       }
     ]
   };
@@ -121,7 +127,7 @@ export default function Achievements() {
               </div>
               <div className="flex-1">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                  NTSE Qualified - District Topper
+                  NTSE Qualified
                 </h2>
                 <p className="text-lg text-green-700 font-semibold mb-2">
                   National Talent Search Examination
@@ -132,7 +138,7 @@ export default function Achievements() {
 
             <div className="space-y-4">
               <p className="text-gray-700 text-lg leading-relaxed">
-                Qualified the prestigious <strong>National Talent Search Examination (NTSE)</strong> conducted by NCERT, securing the <strong>District Topper</strong> position in Class 10. NTSE is one of India&apos;s most competitive scholarship examinations that identifies and nurtures talented students.
+                Qualified the prestigious <strong>National Talent Search Examination (NTSE)</strong> conducted by NCERT. NTSE is one of India&apos;s most competitive scholarship examinations that identifies and nurtures talented students at the national level.
               </p>
 
               <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -143,8 +149,8 @@ export default function Achievements() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900">District Leadership</p>
-                      <p className="text-sm text-gray-600">Topped the district in this prestigious national examination</p>
+                      <p className="font-semibold text-gray-900">National Recognition</p>
+                      <p className="text-sm text-gray-600">Qualified highly competitive national scholarship examination</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -152,7 +158,7 @@ export default function Achievements() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900">Early Recognition</p>
+                      <p className="font-semibold text-gray-900">Early Talent Identification</p>
                       <p className="text-sm text-gray-600">Identified as a national talent at the school level</p>
                     </div>
                   </div>
@@ -161,7 +167,7 @@ export default function Achievements() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900">Comprehensive Skills</p>
+                      <p className="font-semibold text-gray-900">Comprehensive Assessment</p>
                       <p className="text-sm text-gray-600">Demonstrated aptitude in science, mathematics, and mental ability</p>
                     </div>
                   </div>
@@ -170,8 +176,8 @@ export default function Achievements() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900">Foundation Building</p>
-                      <p className="text-sm text-gray-600">Early achievement that set the trajectory for academic excellence</p>
+                      <p className="font-semibold text-gray-900">Scholarship Merit</p>
+                      <p className="text-sm text-gray-600">Qualified for merit-based scholarship program</p>
                     </div>
                   </div>
                 </div>
@@ -179,7 +185,78 @@ export default function Achievements() {
 
               <div className="bg-green-100 border-l-4 border-green-600 p-4 rounded">
                 <p className="text-gray-800 font-medium">
-                  <span className="font-bold text-green-800">Impact:</span> NTSE qualification at the district topper level demonstrated early academic promise and strong foundational knowledge across multiple subjects, establishing a pattern of consistent excellence.
+                  <span className="font-bold text-green-800">Impact:</span> NTSE qualification demonstrated early academic promise and strong foundational knowledge across multiple subjects, establishing a pattern of consistent excellence.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg shadow-lg p-8 border-l-4 border-purple-600">
+            <div className="flex items-start mb-6">
+              <div className="bg-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mr-6 flex-shrink-0">
+                🥇
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  District Topper - Class 10
+                </h2>
+                <p className="text-lg text-purple-700 font-semibold mb-2">
+                  CBSE Board Examination
+                </p>
+                <p className="text-gray-600 font-medium">June 2019</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Secured <strong>District Topper</strong> position in Class 10 CBSE Board Examination, demonstrating consistent academic excellence and subject mastery across all disciplines at the secondary education level.
+              </p>
+
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Achievement Significance</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">District Leadership</p>
+                      <p className="text-sm text-gray-600">Achieved highest marks across all subjects in the district</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">Academic Excellence</p>
+                      <p className="text-sm text-gray-600">Outstanding performance in CBSE board examinations</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">All-Round Performance</p>
+                      <p className="text-sm text-gray-600">Excelled across science, mathematics, languages, and social studies</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-purple-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">Strong Foundation</p>
+                      <p className="text-sm text-gray-600">Solid groundwork for future academic achievements</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-purple-100 border-l-4 border-purple-600 p-4 rounded">
+                <p className="text-gray-800 font-medium">
+                  <span className="font-bold text-purple-800">Impact:</span> District Topper achievement in Class 10 CBSE boards validated consistent academic performance and comprehensive subject knowledge, setting the foundation for subsequent competitive examination success.
                 </p>
               </div>
             </div>
@@ -192,12 +269,22 @@ export default function Achievements() {
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
             
             <div className="mb-8 flex items-start">
+              <div className="bg-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-sm mr-6 flex-shrink-0 relative z-10">
+                2019
+              </div>
+              <div className="bg-gray-50 p-6 rounded-lg flex-1">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">District Topper - Class 10 CBSE</h3>
+                <p className="text-gray-700">Secured District Topper position in Class 10 CBSE Board Examination, demonstrating all-round academic excellence</p>
+              </div>
+            </div>
+
+            <div className="mb-8 flex items-start">
               <div className="bg-green-600 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-sm mr-6 flex-shrink-0 relative z-10">
                 2019
               </div>
               <div className="bg-gray-50 p-6 rounded-lg flex-1">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">NTSE District Topper</h3>
-                <p className="text-gray-700">Qualified National Talent Search Examination as District Topper in Class 10, demonstrating early academic excellence</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">NTSE Qualified</h3>
+                <p className="text-gray-700">Qualified National Talent Search Examination conducted by NCERT, identified as national talent at school level</p>
               </div>
             </div>
 
@@ -239,15 +326,15 @@ export default function Achievements() {
             These achievements reflect a consistent pattern of academic excellence and competitive performance. From early recognition through NTSE to competing at the national level in JEE, each milestone demonstrates dedication to learning, strong problem-solving capabilities, and the ability to perform under pressure.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white bg-opacity-20 p-5 rounded-lg">
+            <div className="bg-slate-900 bg-opacity-20 p-5 rounded-lg">
               <h3 className="font-semibold text-lg mb-2">Consistency</h3>
               <p className="text-sm">Maintained excellence from Class 10 through competitive exams and college education</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-5 rounded-lg">
+            <div className="bg-slate-900 bg-opacity-20 p-5 rounded-lg">
               <h3 className="font-semibold text-lg mb-2">Competition</h3>
               <p className="text-sm">Performed at the highest level against large candidate pools nationwide</p>
             </div>
-            <div className="bg-white bg-opacity-20 p-5 rounded-lg">
+            <div className="bg-slate-900 bg-opacity-20 p-5 rounded-lg">
               <h3 className="font-semibold text-lg mb-2">Foundation</h3>
               <p className="text-sm">Built strong fundamentals that translate to professional software development success</p>
             </div>
