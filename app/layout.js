@@ -86,7 +86,7 @@ export default function RootLayout({ children }) {
     "sameAs": [
       "https://github.com/saurava69/",
       "https://www.linkedin.com/in/sauravkumar25",
-      "https://leetcode.com/sauravx25",
+      "https://leetcode.com/0explorer0",
       "https://codeforces.com/profile/sauravx25"
     ],
     "jobTitle": "Associate Developer",
@@ -186,7 +186,7 @@ export default function RootLayout({ children }) {
                 <ul className="space-y-2 text-sm">
                   <li><a href="https://github.com/saurava69/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a></li>
                   <li><a href="https://www.linkedin.com/in/sauravkumar25" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a></li>
-                  <li><a href="https://leetcode.com/sauravx25" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LeetCode</a></li>
+                  <li><a href="https://leetcode.com/0explorer0" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LeetCode</a></li>
                   <li><a href="mailto:sauravx25@gmail.com" className="hover:text-white transition-colors">Email</a></li>
                 </ul>
               </div>
