@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Projects | Saurav Kumar',
     description: 'Personal projects showcasing full stack development, real-time systems, and cloud architecture',
-    url: 'https://sauravx.com/projects',
+    url: 'https://www.sauravx.com/projects',
   },
 };
 

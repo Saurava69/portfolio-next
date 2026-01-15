@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Technical Skills | Saurav Kumar',
     description: 'Technical expertise in Full Stack Development, Cloud Computing, AI/ML, and Enterprise Systems',
-    url: 'https://sauravx.com/skills',
+    url: 'https://www.sauravx.com/skills',
   },
 };
 

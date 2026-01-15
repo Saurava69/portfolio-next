@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Achievements | Saurav Kumar',
     description: 'Academic excellence and competitive achievements demonstrating consistent performance',
-    url: 'https://sauravx.com/achievements',
+    url: 'https://www.sauravx.com/achievements',
   },
 };
 

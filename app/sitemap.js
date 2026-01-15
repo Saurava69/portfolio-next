@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://sauravx.com';
+  const baseUrl = 'https://www.sauravx.com';
   const currentDate = new Date().toISOString();
 
   return [

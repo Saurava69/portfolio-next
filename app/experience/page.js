@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Work Experience | Saurav Kumar',
     description: 'Professional experience at SAP Labs India building cloud-native applications and AI/ML solutions',
-    url: 'https://sauravx.com/experience',
+    url: 'https://www.sauravx.com/experience',
   },
 };
 

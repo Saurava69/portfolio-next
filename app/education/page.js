@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Education | Saurav Kumar',
     description: 'Educational background from NIT Warangal and academic achievements',
-    url: 'https://sauravx.com/education',
+    url: 'https://www.sauravx.com/education',
   },
 };
 

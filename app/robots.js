@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = 'https://sauravx.com';
+  const baseUrl = 'https://www.sauravx.com';
 
   return {
     rules: {

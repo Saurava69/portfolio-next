@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Contact | Saurav Kumar',
     description: 'Get in touch for collaboration, opportunities, or technical discussions',
-    url: 'https://sauravx.com/contact',
+    url: 'https://www.sauravx.com/contact',
   },
 };
 
@@ -17,7 +17,7 @@ export default function Contact() {
       "name": "Saurav Kumar",
       "email": "sauravx25@gmail.com",
       "telephone": "+916206846984",
-      "url": "https://sauravx.com",
+      "url": "https://www.sauravx.com",
       "sameAs": [
         "https://github.com/saurava69/",
         "https://www.linkedin.com/in/sauravkumar25",

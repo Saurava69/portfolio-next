@@ -173,7 +173,7 @@ npm start
 
 1. **Resume Content**: Edit content in each page file (`app/*/page.js`)
 2. **Metadata**: Update SEO metadata in each page's metadata export
-3. **Domain**: Current domain is configured as `https://sauravx.com` in:
+3. **Domain**: Current domain is configured as `https://www.sauravx.com` in:
    - `app/layout.js`
    - `app/sitemap.js`
    - `app/robots.js`
@@ -206,7 +206,7 @@ npm start
 
 ## 🔗 Important Links
 
-- **Production URL**: `https://sauravx.com`
+- **Production URL**: `https://www.sauravx.com`
 - **GitHub**: https://github.com/saurava69/
 - **LinkedIn**: https://www.linkedin.com/in/sauravkumar25
 

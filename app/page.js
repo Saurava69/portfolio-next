@@ -4,7 +4,7 @@ export const metadata = {
   openGraph: {
     title: 'Saurav Kumar - Software Engineer | Full Stack Developer',
     description: 'Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML',
-    url: 'https://sauravx.com',
+    url: 'https://www.sauravx.com',
   },
 };
 
@@ -13,7 +13,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Saurav Kumar - Software Engineer Portfolio",
-    "url": "https://sauravx.com",
+    "url": "https://www.sauravx.com",
     "description": "Professional portfolio of Saurav Kumar, Associate Developer at SAP Labs India",
     "author": {
       "@type": "Person",

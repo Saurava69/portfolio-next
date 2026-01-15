@@ -2,7 +2,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL('https://sauravx.com'),
+  metadataBase: new URL('https://www.sauravx.com'),
   title: {
     default: 'Saurav Kumar - Software Engineer | Full Stack Developer',
     template: '%s | Saurav Kumar'
@@ -39,7 +39,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://sauravx.com',
+    url: 'https://www.sauravx.com',
     title: 'Saurav Kumar - Software Engineer | Full Stack Developer',
     description: 'Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML. Building scalable cloud-native applications.',
     siteName: 'Saurav Kumar Portfolio',
@@ -81,8 +81,8 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Saurav Kumar",
-    "url": "https://sauravx.com",
-    "image": "https://sauravx.com/profile.jpg",
+    "url": "https://www.sauravx.com",
+    "image": "https://www.sauravx.com/profile.jpg",
     "sameAs": [
       "https://github.com/saurava69/",
       "https://www.linkedin.com/in/sauravkumar25",
@@ -140,7 +140,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
         />
-        <link rel="canonical" href="https://sauravx.com" />
+        <link rel="canonical" href="https://www.sauravx.com" />
       </head>
       <body className="antialiased bg-gray-50 text-gray-900">
         <header className="bg-white shadow-sm sticky top-0 z-50">
