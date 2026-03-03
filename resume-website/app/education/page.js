@@ -20,7 +20,7 @@ export default function Education() {
         "name": "National Institute of Technology, Warangal",
         "url": "https://www.nitw.ac.in"
       },
-      "dateCreated": "2021-12",
+      "dateCreated": "2021-11",
       "expires": "2025-05"
     }
   ];
@@ -60,7 +60,7 @@ export default function Education() {
                 <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-bold text-xl mb-2">
                   CGPA: 7.69/10
                 </div>
-                <p className="text-gray-600 font-medium">December 2021 – May 2025</p>
+                <p className="text-gray-600 font-medium">November 2021 – May 2025</p>
               </div>
             </div>
 
@@ -90,19 +90,7 @@ export default function Education() {
                     <svg className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                     </svg>
-                    <span className="font-medium text-gray-900">Artificial Intelligence & ML</span>
-                  </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-sm">
-                    <svg className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                    </svg>
                     <span className="font-medium text-gray-900">Database Management Systems</span>
-                  </div>
-                  <div className="flex items-center bg-white p-3 rounded-lg shadow-sm">
-                    <svg className="w-5 h-5 text-blue-600 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                    </svg>
-                    <span className="font-medium text-gray-900">Computer Networks</span>
                   </div>
                 </div>
               </div>
@@ -114,14 +102,14 @@ export default function Education() {
                     <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1 flex-shrink-0">1</span>
                     <div>
                       <p className="font-semibold text-gray-900">Strong Foundation in Computer Science</p>
-                      <p className="text-gray-700 text-sm">Comprehensive coursework in algorithms, data structures, and system design principles</p>
+                      <p className="text-gray-700 text-sm">Comprehensive coursework in algorithms, data structures, operating systems, and OOP principles</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-1 flex-shrink-0">2</span>
                     <div>
-                      <p className="font-semibold text-gray-900">AI & Machine Learning Specialization</p>
-                      <p className="text-gray-700 text-sm">Advanced coursework in artificial intelligence and machine learning fundamentals</p>
+                      <p className="font-semibold text-gray-900">Database & Systems Knowledge</p>
+                      <p className="text-gray-700 text-sm">Strong understanding of database management systems and system design principles</p>
                     </div>
                   </li>
                   <li className="flex items-start">

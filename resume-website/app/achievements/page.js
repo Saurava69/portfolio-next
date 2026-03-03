@@ -29,7 +29,13 @@ export default function Achievements() {
         "@type": "ListItem",
         "position": 3,
         "name": "District Topper - Class 10 CBSE",
-        "description": "Secured District Topper position in Class 10 CBSE Board Examination"
+        "description": "Secured District Topper position in Class 10 CBSE Board Examination with 97.6%"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "500+ Algorithmic Problems Solved",
+        "description": "Solved 500+ algorithmic problems on Leetcode, Codeforces and InterviewBit"
       }
     ]
   };
@@ -257,6 +263,68 @@ export default function Achievements() {
               <div className="bg-purple-100 border-l-4 border-purple-600 p-4 rounded">
                 <p className="text-gray-800 font-medium">
                   <span className="font-bold text-purple-800">Impact:</span> District Topper achievement in Class 10 CBSE boards validated consistent academic performance and comprehensive subject knowledge, setting the foundation for subsequent competitive examination success.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg shadow-lg p-8 border-l-4 border-blue-600">
+            <div className="flex items-start mb-6">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mr-6 flex-shrink-0">
+                💻
+              </div>
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  500+ Algorithmic Problems Solved
+                </h2>
+                <p className="text-lg text-blue-700 font-semibold mb-2">
+                  LeetCode, Codeforces & InterviewBit
+                </p>
+                <p className="text-gray-600 font-medium">Ongoing</p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Solved <strong>500+ algorithmic problems</strong> across multiple competitive programming platforms including <strong>LeetCode, Codeforces, and InterviewBit</strong>. This demonstrates strong problem-solving abilities and deep understanding of data structures and algorithms.
+              </p>
+
+              <div className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Platforms & Skills</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">LeetCode</p>
+                      <p className="text-sm text-gray-600">Algorithm & coding challenges</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">Codeforces</p>
+                      <p className="text-sm text-gray-600">Competitive programming</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-blue-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900">InterviewBit</p>
+                      <p className="text-sm text-gray-600">Interview preparation</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-blue-100 border-l-4 border-blue-600 p-4 rounded">
+                <p className="text-gray-800 font-medium">
+                  <span className="font-bold text-blue-800">Impact:</span> Consistent problem-solving practice has strengthened algorithmic thinking, code optimization skills, and ability to tackle complex technical challenges efficiently.
                 </p>
               </div>
             </div>

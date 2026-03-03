@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Work Experience',
-  description: 'Saurav Kumar\'s professional experience at SAP Labs India as Associate Developer and SDE Intern. Building cloud-native applications, AI/ML solutions, and automation frameworks.',
+  description: 'Saurav Kumar\'s professional experience at SAP Labs India as Associate Developer and SDE Intern. Building cloud-native E2E test orchestration platforms, AI/ML solutions, and enterprise applications.',
   openGraph: {
     title: 'Work Experience | Saurav Kumar',
     description: 'Professional experience at SAP Labs India building cloud-native applications and AI/ML solutions',
@@ -25,7 +25,7 @@ export default function Experience() {
         }
       },
       "startDate": "2025-07",
-      "description": "Building cloud-native automation frameworks and enterprise applications on SAP BTP"
+      "description": "Building cloud-native E2E test orchestration platform on SAP BTP"
     },
     {
       "@context": "https://schema.org",
@@ -43,7 +43,7 @@ export default function Experience() {
       },
       "startDate": "2024-05",
       "endDate": "2024-07",
-      "description": "Developed AI models for synthetic media detection across image, audio, and video modalities"
+      "description": "Developed deepfake detection pipeline using EfficientNet-B4"
     }
   ];
 
@@ -75,26 +75,26 @@ export default function Experience() {
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">GIRAF RunAnyWhere – Cloud-Native Automation Framework</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Cloud-Native E2E Test Orchestration Platform</h3>
                 <p className="text-gray-700 mb-3">
-                  Cloud-native automation framework for executing end-to-end tests on HANA Cloud across multiple environments with AI-driven result analysis and dynamic dependency handling.
+                  Designed and built a cloud-native E2E test orchestration platform using SAP CAP, Spring Boot, and React, deployed as a multi-tenant SaaS application on SAP BTP.
                 </p>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Developed modular <strong>React + UI5 Web Components</strong> UI, improving test execution visibility and added Dashboard view, Report Portal for Test Analysis</span>
+                    <span>Designed and built a cloud-native E2E test orchestration platform using <strong>SAP CAP, Spring Boot, and React</strong>, executing <strong>600+ automated tests</strong> across <strong>5 SAP HANA clusters</strong>; deployed as a multi-tenant SaaS application on <strong>SAP BTP</strong> with secure authentication and audit logging.</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Built <strong>CAP backend</strong> with secure <strong>OData services</strong>, enabling <strong>600+ automated tests</strong> across environments</span>
+                    <span>Implemented <strong>application-level locking and pooled DB isolation</strong> to prevent shared-state conflicts across <strong>200+ concurrent test executions</strong>; reduced false failures by <strong>30%</strong> and cycle time by <strong>50%</strong>.</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Integrated <strong>GenAI-based failure classification</strong>, achieving <strong>85% accuracy</strong> in distinguishing true vs. environment-related issues</span>
+                    <span>Built a <strong>dynamic dependency resolution engine</strong> with real-time health validation and batch execution, reliably processing <strong>600+ interdependent test cases</strong> per request and supporting hundreds of test plan executions across <strong>5 teams</strong>.</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Architected and deployed a <strong>multi-target, API-first cloud framework</strong> on <strong>SAP BTP</strong>, registered in <strong>SaaS Registry</strong>, enabling scalability and reducing false failure runs by <strong>30%</strong></span>
+                    <span>Integrated an <strong>asynchronous GenAI-based failure classification service</strong> achieving <strong>85% automated root-cause tagging accuracy</strong> on historical failure dataset, reducing manual triage effort by <strong>60%</strong>.</span>
                   </li>
                 </ul>
               </div>
@@ -102,24 +102,25 @@ export default function Experience() {
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Key Technologies</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">UI5 Web Components</span>
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">SAP CAP</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">OData</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">SAP BTP</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">HANA Cloud</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">GenAI</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Node.js</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Java (Spring Boot)</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">SAP HANA</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">OData v4</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">XSUAA</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Cloud Foundry</span>
                 </div>
               </div>
 
               <div className="bg-green-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Impact & Results</h4>
                 <ul className="space-y-1 text-gray-700">
-                  <li>✓ Enabled 600+ automated tests across multiple environments</li>
-                  <li>✓ Achieved 85% accuracy in AI-driven failure classification</li>
-                  <li>✓ Reduced false failure runs by 30%</li>
-                  <li>✓ Improved test execution visibility and analysis capabilities</li>
+                  <li>✓ Executed 600+ automated tests across 5 SAP HANA clusters</li>
+                  <li>✓ Reduced false failures by 30% and cycle time by 50%</li>
+                  <li>✓ Achieved 85% accuracy in GenAI-driven failure classification</li>
+                  <li>✓ Reduced manual triage effort by 60%</li>
+                  <li>✓ Supported 200+ concurrent test executions</li>
                 </ul>
               </div>
             </div>
@@ -138,26 +139,18 @@ export default function Experience() {
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Synthetic Media Detection</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Deepfake Detection Pipeline</h3>
                 <p className="text-gray-700 mb-3">
-                  Developed and deployed AI models to detect synthetic media across image, audio, and video modalities.
+                  Developed a deepfake detection pipeline using EfficientNet-B4 with production-ready inference performance.
                 </p>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-green-600 mr-2">•</span>
-                    <span>Engineered <strong>CNN models (EfficientNet-B4)</strong> achieving <strong>97.16% image authenticity accuracy</strong> and <strong>98.0% audio deepfake detection</strong> using mel-spectrograms</span>
+                    <span>Developed a deepfake detection pipeline using <strong>EfficientNet-B4</strong> trained on <strong>140k+ labeled samples</strong>, achieving <strong>98% validation accuracy</strong> and production-ready inference performance.</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-600 mr-2">•</span>
-                    <span>Trained and validated models in <strong>TensorFlow</strong> using <strong>140k+ synthetic/natural media samples</strong></span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    <span>Designed real-time detection feature using <strong>OpenCV + WebRTC</strong>, processing <strong>1080p feeds at 18 FPS</strong></span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-600 mr-2">•</span>
-                    <span>Built a scalable <strong>Flask backend</strong> handling <strong>300+ concurrent media analysis requests</strong>, with an integrated <strong>React UI</strong> for real-time visualization</span>
+                    <span>Built a <strong>Flask-based inference service</strong> supporting <strong>300+ concurrent requests</strong> with real-time image and video processing via <strong>OpenCV and WebRTC</strong>; optimized <strong>1080p stream inference to 18 FPS</strong> through batching and preprocessing improvements.</span>
                   </li>
                 </ul>
               </div>
@@ -165,13 +158,11 @@ export default function Experience() {
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Key Technologies</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">TensorFlow</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">EfficientNet-B4</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">CNN</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">TensorFlow</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">OpenCV</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">WebRTC</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Flask</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">React</span>
                 </div>
               </div>
@@ -179,11 +170,10 @@ export default function Experience() {
               <div className="bg-green-50 p-4 rounded-lg">
                 <h4 className="font-semibold text-gray-900 mb-2">Impact & Results</h4>
                 <ul className="space-y-1 text-gray-700">
-                  <li>✓ Achieved 97.16% accuracy in image authenticity detection</li>
-                  <li>✓ Achieved 98.0% accuracy in audio deepfake detection</li>
+                  <li>✓ Achieved 98% validation accuracy in deepfake detection</li>
+                  <li>✓ Trained models on 140k+ diverse labeled samples</li>
                   <li>✓ Processed 1080p video feeds at 18 FPS in real-time</li>
                   <li>✓ Handled 300+ concurrent media analysis requests</li>
-                  <li>✓ Trained models on 140k+ diverse media samples</li>
                 </ul>
               </div>
             </div>
@@ -211,14 +201,14 @@ export default function Experience() {
               <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">3</div>
               <div>
                 <h3 className="font-semibold text-gray-900">Cloud Architecture</h3>
-                <p className="text-gray-700 text-sm">Designed and deployed multi-target cloud-native frameworks on SAP BTP</p>
+                <p className="text-gray-700 text-sm">Designed and deployed multi-tenant cloud-native frameworks on SAP BTP with Cloud Foundry</p>
               </div>
             </div>
             <div className="flex items-start">
               <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">4</div>
               <div>
                 <h3 className="font-semibold text-gray-900">Full Stack Excellence</h3>
-                <p className="text-gray-700 text-sm">End-to-end development from React frontends to CAP backends with OData services</p>
+                <p className="text-gray-700 text-sm">End-to-end development from React frontends to CAP/Spring Boot backends with OData services</p>
               </div>
             </div>
           </div>
