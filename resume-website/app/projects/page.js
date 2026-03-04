@@ -16,10 +16,23 @@ export default function Projects() {
       "name": "Saurity - WordPress Security Plugin",
       "description": "Enterprise-grade WordPress security plugin implementing multi-layer protection with external threat intelligence integration",
       "author": {
-        "@type": "Person",
-        "name": "Saurav Kumar"
+        "@type": "Organization",
+        "name": "Saurity"
       },
-      "url": "https://github.com/Saurava69/saurity",
+      "url": "https://github.com/saurity/saurity",
+      "programmingLanguage": ["PHP", "JavaScript", "Next.js"],
+      "keywords": ["wordpress", "security", "WAF", "threat intelligence", "plugin"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Saurity - WordPress Security Plugin",
+      "description": "Enterprise-grade WordPress security plugin implementing multi-layer protection with external threat intelligence integration",
+      "author": {
+        "@type": "Organization",
+        "name": "Saurity"
+      },
+      "url": "https://www.saurity.com",
       "programmingLanguage": ["PHP", "JavaScript", "Next.js"],
       "keywords": ["wordpress", "security", "WAF", "threat intelligence", "plugin"]
     },
@@ -62,7 +75,7 @@ export default function Projects() {
               </div>
               <div className="flex items-center space-x-4 mt-4 md:mt-0">
                 <a
-                  href="https://github.com/Saurava69/saurity"
+                  href="https://github.com/saurity/saurity"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors text-sm"
@@ -70,7 +83,7 @@ export default function Projects() {
                   View on GitHub
                 </a>
                 <a
-                  href="https://saurity.dev"
+                  href="https://www.saurity.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors text-sm"
