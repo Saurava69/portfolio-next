@@ -6,8 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Cloudflare Pages doesn't support trailing slashes by default
-  trailingSlash: false,
+  // GitHub Pages deployment configuration
+  basePath: process.env.GITHUB_ACTIONS ? '/portfolio-next' : '',
+  assetPrefix: process.env.GITHUB_ACTIONS ? '/portfolio-next/' : '',
+  trailingSlash: true,
 };
 
 export default nextConfig;
