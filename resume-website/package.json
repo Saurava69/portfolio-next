@@ -10,8 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "pages:build": "next build",
-    "pages:deploy": "npm run pages:build && npx wrangler pages deploy out"
+    "pages:build": "next build"
   },
   "dependencies": {
     "next": "16.1.1",
