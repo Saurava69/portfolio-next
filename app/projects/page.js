@@ -25,7 +25,7 @@ export default function Projects() {
               href="https://github.com/saurava69/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline mt-1 sm:mt-0"
+              className="text-sm text-accent underline underline-offset-3 hover:text-foreground mt-1 sm:mt-0"
             >
               View on GitHub &rarr;
             </a>
@@ -68,7 +68,7 @@ export default function Projects() {
                 href="https://github.com/saurity/saurity"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-accent hover:underline"
+                className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
               >
                 GitHub &rarr;
               </a>
@@ -76,7 +76,7 @@ export default function Projects() {
                 href="https://www.saurity.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-accent hover:underline"
+                className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
               >
                 Website &rarr;
               </a>
@@ -96,7 +96,7 @@ export default function Projects() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-border mt-2 text-xs">&#9656;</span>
-              <span>SEO-optimized <a href="https://www.saurity.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Next.js marketing site</a> with custom CMS and admin dashboard (Lighthouse 98+)</span>
+              <span>SEO-optimized <a href="https://www.saurity.com/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-3 hover:text-foreground">Next.js marketing site</a> with custom CMS and admin dashboard (Lighthouse 98+)</span>
             </li>
           </ul>
           <div className="flex flex-wrap gap-2">
@@ -115,7 +115,7 @@ export default function Projects() {
               href="https://github.com/Saurava69/realtime-chat-app"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-accent hover:underline mt-1 sm:mt-0"
+              className="text-sm text-accent underline underline-offset-3 hover:text-foreground mt-1 sm:mt-0"
             >
               View on GitHub &rarr;
             </a>
