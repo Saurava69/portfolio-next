@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
+const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
+const repoName = 'portfolio-next';
+
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
   output: 'export',
   images: {
     unoptimized: true,
   },
-  // GitHub Pages deployment configuration
-  basePath: process.env.GITHUB_ACTIONS ? '/portfolio-next' : '',
-  assetPrefix: process.env.GITHUB_ACTIONS ? '/portfolio-next/' : '',
+  basePath: isGithubActions ? `/${repoName}` : '',
+  assetPrefix: isGithubActions ? `/${repoName}/` : '',
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGithubActions ? `/${repoName}` : '',
+  },
 };
 
 export default nextConfig;

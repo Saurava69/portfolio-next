@@ -1,189 +1,271 @@
-export const metadata = {
-  title: 'Home',
-  description: 'Saurav Kumar - Associate Developer at SAP Labs India. Full Stack Developer specializing in Cloud Computing, AI/ML, React, Node.js, Java, and Python. Building scalable cloud-native applications on SAP BTP.',
-  openGraph: {
-    title: 'Saurav Kumar - Software Engineer | Full Stack Developer',
-    description: 'Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML',
-    url: 'https://www.sauravx.com',
-  },
-};
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Home() {
-  const websiteSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Saurav Kumar - Software Engineer Portfolio",
-    "url": "https://www.sauravx.com",
-    "description": "Professional portfolio of Saurav Kumar, Associate Developer at SAP Labs India",
-    "author": {
-      "@type": "Person",
-      "name": "Saurav Kumar"
-    }
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Saurav Kumar
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 mb-6">
-              Associate Developer | Full Stack Engineer | Cloud & AI/ML Specialist
-            </p>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-              Building scalable cloud-native applications at SAP Labs India. Expertise in React, Node.js, Java, Python, SAP CAP, UI5, and GenAI integration on SAP BTP and HANA Cloud platforms.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/Resume.pdf"
-                download
-                className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center"
-              >
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Download Resume
-              </a>
-              <a
-                href="https://github.com/saurava69/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/sauravkumar25"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="/contact"
-                className="bg-white text-gray-900 border-2 border-gray-300 px-6 py-3 rounded-lg font-medium hover:border-gray-400 transition-colors"
-              >
-                Contact Me
-              </a>
-            </div>
-          </div>
+    <div className="max-w-5xl mx-auto px-6">
+      {/* Hero */}
+      <section className="min-h-[80vh] flex flex-col justify-center py-20">
+        <p className="text-muted text-sm mb-4 tracking-wide uppercase">Software Engineer</p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6">
+          Hi, I&apos;m Saurav Kumar.
+        </h1>
+        <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-10">
+          Associate Developer at SAP Labs India. I build scalable cloud-native applications with Java, React, and Node.js focused on distributed systems, performance, and clean architecture.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="https://github.com/saurava69/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/sauravkumar25"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
+            href={`${basePath}/Resume.pdf`}
+            download
+            className="text-sm text-background bg-foreground px-5 py-2.5 rounded-md hover:bg-accent hover:text-white transition-colors"
+          >
+            Download Resume
+          </a>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Professional Summary</h2>
-          <article className="prose prose-lg max-w-4xl mx-auto text-gray-700">
-            <p>
-              Associate Developer at SAP Labs India with strong expertise in full stack development, cloud computing, and artificial intelligence. Proven track record of building enterprise-grade applications that serve hundreds of concurrent users with high performance and reliability.
-            </p>
-            <p>
-              Specialized in architecting cloud-native solutions using React, Node.js, Java, and Python on SAP BTP. Experience in developing AI-powered automation frameworks, synthetic media detection systems, and real-time communication platforms. Strong foundation in data structures, algorithms, and system design from National Institute of Technology, Warangal.
-            </p>
-            <p>
-              Passionate about leveraging cutting-edge technologies including GenAI, microservices architecture, and modern web frameworks to solve complex business problems and deliver measurable impact.
-            </p>
+      {/* Experience */}
+      <section id="experience" className="py-20 border-t border-border">
+        <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Experience</h2>
+
+        <div className="space-y-16">
+          <article>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">Associate Developer</h3>
+              <span className="text-sm text-muted mt-1 sm:mt-0">Jul 2025 — Present</span>
+            </div>
+            <p className="text-accent text-sm mb-2">SAP Labs India, Bengaluru</p>
+            <p className="text-muted text-sm mb-4">GIRAF RunAnyWhere — Cloud-native E2E test orchestration platform on HANA Cloud</p>
+            <ul className="space-y-2.5 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Built CAP backend with OData services and Spring Boot APIs, running 600+ automated tests across 5 HANA clusters with dynamic dependency handling</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Implemented locking and DB isolation for 200+ concurrent runs, reducing failures by 30% and cycle time by 50%</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Architected multi-target, API-first cloud framework on SAP BTP registered in SaaS Registry, enabling scalability across environments</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Added async GenAI failure classification and auto-healing (85% accuracy), reducing manual triage by 60%</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Developed a React + UI5 Web Components UI with Dashboards and Custom Reports for test analysis, centralized
+configuration system, and branch-based execution</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {["SAP CAP", "Spring Boot", "React", "OData", "SAP BTP", "HANA Cloud", "GenAI"].map((t) => (
+                <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <article>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">SDE Intern</h3>
+              <span className="text-sm text-muted mt-1 sm:mt-0">May 2024 — Jul 2024</span>
+            </div>
+            <p className="text-accent text-sm mb-4">SAP Labs India, Bengaluru</p>
+            <ul className="space-y-2.5 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Built a deepfake detection pipeline (EfficientNet-B4) trained on 140k+ samples, achieving 98% validation accuracy</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Built a Flask inference service supporting 300+ concurrent requests with real-time image/video processing; optimized 1080p inference to 22 FPS</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-2 mt-5">
+              {["Python", "TensorFlow", "Flask", "OpenCV", "WebRTC", "React"].map((t) => (
+                <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
           </article>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Core Competencies</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <article className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Full Stack Development</h3>
-              <p className="text-gray-700">
-                Building end-to-end web applications with React, Node.js, and modern frameworks. Expertise in UI5 Web Components, RESTful APIs, and real-time communication with Socket.io.
-              </p>
-            </article>
-            <article className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Cloud & Enterprise Systems</h3>
-              <p className="text-gray-700">
-                Architecting scalable solutions on SAP BTP, HANA Cloud, and implementing SAP CAP framework with OData services for enterprise applications.
-              </p>
-            </article>
-            <article className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">AI/ML & Automation</h3>
-              <p className="text-gray-700">
-                Developing CNN models with TensorFlow, implementing GenAI-based classification systems, and building automated testing frameworks with 85% accuracy.
-              </p>
-            </article>
+      {/* Projects */}
+      <section id="projects" className="py-20 border-t border-border">
+        <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Projects</h2>
+
+        <div className="space-y-8">
+          <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">Railway Ticket Booking System</h3>
+              <a
+                href="https://github.com/saurava69/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:underline mt-1 sm:mt-0"
+              >
+                View on GitHub &rarr;
+              </a>
+            </div>
+            <p className="text-muted leading-relaxed mb-4">
+              High-concurrency train booking system built with Spring Boot, PostgreSQL, Redis, Apache Kafka, and Elasticsearch.
+            </p>
+            <ul className="space-y-2.5 text-muted mb-6">
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Distributed seat allocation using Redis Lua scripts and TTL-based locks with idempotent APIs and optimistic concurrency control</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Event-driven workflow using Kafka for cancellations, refunds, and waitlist promotion with retry handling and dead-letter queues</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>CQRS-based search pipeline (PostgreSQL to Elasticsearch sync) with Redis caching, achieving sub-second latency</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>JWT-based RBAC, 30+ REST APIs via Swagger, React + shadcn/ui frontend</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              {["Spring Boot", "PostgreSQL", "Redis", "Kafka", "Elasticsearch", "React", "Docker"].map((t) => (
+                <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">ChatWave</h3>
+              <a
+                href="https://github.com/Saurava69/realtime-chat-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:underline mt-1 sm:mt-0"
+              >
+                View on GitHub &rarr;
+              </a>
+            </div>
+            <p className="text-muted leading-relaxed mb-4">
+              Real-time chat application handling 500+ concurrent users with sub-200ms latency.
+            </p>
+            <ul className="space-y-2.5 text-muted mb-6">
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Event-driven architecture with Socket.io, JWT auth, and AES-256 encryption</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Binary protocol optimization reducing bandwidth by 40%</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Group chat with role-based access and Redis-cached participant lists</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              {["React", "Node.js", "Socket.io", "MongoDB", "Redis", "JWT"].map((t) => (
+                <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="py-20 border-t border-border">
+        <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Skills</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Languages</h3>
+            <p className="text-foreground">Java, C++, JavaScript, Python, SQL</p>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Backend & Frameworks</h3>
+            <p className="text-foreground">Spring Boot, Node.js, SAP CAP, Express, Elasticsearch</p>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Databases & Messaging</h3>
+            <p className="text-foreground">PostgreSQL, MySQL, Redis, Kafka</p>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Cloud & DevOps</h3>
+            <p className="text-foreground">Docker, Kubernetes, AWS (EC2, S3, SQS), Jenkins, Git</p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Featured Highlights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <article className="border-l-4 border-blue-600 pl-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">GIRAF RunAnyWhere Framework</h3>
-              <p className="text-gray-700">
-                Cloud-native automation framework executing 600+ automated tests on HANA Cloud with GenAI-based failure analysis achieving 85% accuracy. Reduced false failures by 30%.
-              </p>
-            </article>
-            <article className="border-l-4 border-green-600 pl-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Synthetic Media Detection</h3>
-              <p className="text-gray-700">
-                AI models detecting synthetic media across image, audio, and video with 97.16% accuracy using EfficientNet-B4 and mel-spectrograms, processing 1080p feeds at 18 FPS.
-              </p>
-            </article>
-            <article className="border-l-4 border-purple-600 pl-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">ChatWave Platform</h3>
-              <p className="text-gray-700">
-                Real-time chat application handling 500+ concurrent users with sub-200ms latency using Socket.io, JWT authentication, and AES-256 encryption.
-              </p>
-            </article>
-            <article className="border-l-4 border-orange-600 pl-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Academic Excellence</h3>
-              <p className="text-gray-700">
-                99.32 percentile in JEE Mains among 1 million+ students, NTSE qualified District Topper, graduated from NIT Warangal with 7.69 CGPA in Electronics & Communication Engineering.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+      {/* Contact */}
+      <section id="contact" className="py-20 border-t border-border">
+        <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Contact</h2>
 
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Collaborate?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Open to opportunities in full stack development, cloud engineering, and AI/ML roles. Let&apos;s build something impactful together.
+        <div className="space-y-6">
+          <p className="text-lg text-muted max-w-xl leading-relaxed">
+            Open to opportunities in backend engineering, distributed systems, and full stack development.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <a
-              href="/Resume.pdf"
-              download
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center"
+              href="mailto:sauravx25@gmail.com"
+              className="border border-border rounded-lg p-5 hover:border-muted transition-colors group"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              Download Resume
+              <p className="text-xs text-muted uppercase tracking-wide mb-2">Email</p>
+              <p className="text-foreground group-hover:text-accent transition-colors">sauravx25@gmail.com</p>
             </a>
             <a
-              href="/contact"
-              className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              href="tel:+916206846984"
+              className="border border-border rounded-lg p-5 hover:border-muted transition-colors group"
             >
-              Get in Touch
+              <p className="text-xs text-muted uppercase tracking-wide mb-2">Phone</p>
+              <p className="text-foreground group-hover:text-accent transition-colors">+91 620 684 6984</p>
             </a>
             <a
-              href="/experience"
-              className="bg-transparent text-white border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
+              href="https://www.linkedin.com/in/sauravkumar25"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border rounded-lg p-5 hover:border-muted transition-colors group"
             >
-              View Experience
+              <p className="text-xs text-muted uppercase tracking-wide mb-2">LinkedIn</p>
+              <p className="text-foreground group-hover:text-accent transition-colors">in/sauravkumar25</p>
+            </a>
+            <a
+              href="https://github.com/saurava69/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-border rounded-lg p-5 hover:border-muted transition-colors group"
+            >
+              <p className="text-xs text-muted uppercase tracking-wide mb-2">GitHub</p>
+              <p className="text-foreground group-hover:text-accent transition-colors">saurava69</p>
             </a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
