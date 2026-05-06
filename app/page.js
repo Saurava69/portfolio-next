@@ -1,3 +1,23 @@
+export const metadata = {
+  title: "Saurav Kumar - Software Engineer",
+  description: "Associate Developer at SAP Labs India. Full Stack Developer specializing in Cloud Computing, AI/ML, React, Node.js, Java, and Python.",
+  alternates: {
+    canonical: "https://www.sauravx.com/",
+  },
+  openGraph: {
+    title: "Saurav Kumar - Software Engineer",
+    description: "Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML.",
+    url: "https://www.sauravx.com/",
+    type: "website",
+    siteName: "Saurav Kumar",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saurav Kumar - Software Engineer",
+    description: "Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML.",
+  },
+};
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Home() {
@@ -50,7 +70,7 @@ export default function Home() {
               <span className="text-sm text-muted mt-1 sm:mt-0">Jul 2025 — Present</span>
             </div>
             <p className="text-accent text-sm mb-2">SAP Labs India, Bengaluru</p>
-            <p className="text-muted text-sm mb-4">GIRAF RunAnyWhere — Cloud-native E2E test orchestration platform on HANA Cloud</p>
+            <p className="text-muted text-sm mb-4">GIRAF RunAnyWhere — Cloud-native test orchestration platform on HANA Cloud</p>
             <ul className="space-y-2.5 text-muted">
               <li className="flex items-start gap-3">
                 <span className="text-border mt-2 text-xs">&#9656;</span>
@@ -110,6 +130,40 @@ configuration system, and branch-based execution</span>
         </div>
       </section>
 
+      {/* Education */}
+      <section id="education" className="py-20 border-t border-border">
+        <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Education</h2>
+
+        <div className="space-y-12">
+          <article>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">National Institute of Technology, Warangal</h3>
+              <span className="text-sm text-muted mt-1 sm:mt-0">Dec 2021 — May 2025</span>
+            </div>
+            <p className="text-accent text-sm mb-2">B.Tech in Electronics and Communication Engineering</p>
+            <p className="text-muted text-sm">CGPA: 7.69 / 10</p>
+          </article>
+
+          <article>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">Sunbeam Academy, Varanasi</h3>
+              <span className="text-sm text-muted mt-1 sm:mt-0">Jun 2019 — Apr 2021</span>
+            </div>
+            <p className="text-accent text-sm mb-2">Senior Secondary (Class XII - CBSE)</p>
+            <p className="text-muted text-sm">95.8%</p>
+          </article>
+
+          <article>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">Jawahar Navodaya Vidyalaya, Buxar</h3>
+              <span className="text-sm text-muted mt-1 sm:mt-0">Aug 2014 — Apr 2019</span>
+            </div>
+            <p className="text-accent text-sm mb-2">Secondary (Class X - CBSE)</p>
+            <p className="text-muted text-sm">97.6% — District Topper</p>
+          </article>
+        </div>
+      </section>
+
       {/* Projects */}
       <section id="projects" className="py-20 border-t border-border">
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Projects</h2>
@@ -150,6 +204,54 @@ configuration system, and branch-based execution</span>
             </ul>
             <div className="flex flex-wrap gap-2">
               {["Spring Boot", "PostgreSQL", "Redis", "Kafka", "Elasticsearch", "React", "Docker"].map((t) => (
+                <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+              <h3 className="text-xl font-semibold text-foreground">Saurity</h3>
+              <div className="flex gap-4 mt-1 sm:mt-0">
+                <a
+                  href="https://github.com/saurity/saurity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-accent hover:underline"
+                >
+                  GitHub &rarr;
+                </a>
+                <a
+                  href="https://www.saurity.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-accent hover:underline"
+                >
+                  Website &rarr;
+                </a>
+              </div>
+            </div>
+            <p className="text-muted leading-relaxed mb-4">
+              Enterprise-grade WordPress security plugin with multi-layer protection and external threat intelligence integration.
+            </p>
+            <ul className="space-y-2.5 text-muted mb-6">
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Multi-layer protection (WAF, rate limiting, honeypot) with Cloudflare API, AbuseIPDB, and Spamhaus integration; reduced brute-force and malicious traffic with minimal latency overhead</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>Resilient admin recovery system (kill switch, bypass URL, manual override) with GDPR-compliant logging and adaptive tarpitting</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-border mt-2 text-xs">&#9656;</span>
+                <span>SEO-optimized <a href="https://www.saurity.com/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">Next.js marketing site</a> with custom CMS and admin dashboard (Lighthouse 98+)</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-2">
+              {["WordPress", "PHP", "Next.js", "Cloudflare API", "AbuseIPDB", "React"].map((t) => (
                 <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
                   {t}
                 </span>
@@ -208,7 +310,7 @@ configuration system, and branch-based execution</span>
           </div>
           <div>
             <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Backend & Frameworks</h3>
-            <p className="text-foreground">Spring Boot, Node.js, SAP CAP, Express, Elasticsearch</p>
+            <p className="text-foreground">Spring Boot, Node.js, SAP CAP, Express, React, Elasticsearch</p>
           </div>
           <div>
             <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Databases & Messaging</h3>

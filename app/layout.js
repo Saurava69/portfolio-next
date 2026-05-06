@@ -9,25 +9,18 @@ export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#skills", label: "Skills" },
-    { href: "#contact", label: "Contact" },
+    { href: "/experience", label: "Experience" },
+    { href: "/education", label: "Education" },
+    { href: "/projects", label: "Projects" },
+    { href: "/skills", label: "Skills" },
+    { href: "/blog", label: "Blog" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
     <html lang="en">
       <head>
-        <title>Saurav Kumar - Software Engineer</title>
-        <meta name="description" content="Saurav Kumar - Associate Developer at SAP Labs India. Full Stack Developer specializing in Cloud Computing, AI/ML, React, Node.js, Java, and Python." />
         <meta name="keywords" content="Saurav Kumar, Software Engineer, Full Stack Developer, SAP Labs, React, Node.js, Cloud Computing, AI ML" />
-        <meta property="og:title" content="Saurav Kumar - Software Engineer" />
-        <meta property="og:description" content="Associate Developer at SAP Labs India specializing in Full Stack Development, Cloud Computing, and AI/ML." />
-        <meta property="og:url" content="https://www.sauravx.com" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Saurav Kumar - Software Engineer" />
-        <link rel="canonical" href="https://www.sauravx.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -51,7 +44,7 @@ export default function RootLayout({ children }) {
       <body className="antialiased">
         <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
           <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" className="text-lg font-semibold text-foreground hover:text-accent transition-colors">
+            <a href="/" className="text-lg font-semibold text-foreground hover:text-accent transition-colors">
               Saurav.
             </a>
 
@@ -133,6 +126,9 @@ export default function RootLayout({ children }) {
               </a>
               <a href="https://www.linkedin.com/in/sauravkumar25" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-foreground transition-colors">
                 LinkedIn
+              </a>
+              <a href="https://leetcode.com/u/0explorer0/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted hover:text-foreground transition-colors">
+                LeetCode
               </a>
               <a href="mailto:sauravx25@gmail.com" className="text-sm text-muted hover:text-foreground transition-colors">
                 Email

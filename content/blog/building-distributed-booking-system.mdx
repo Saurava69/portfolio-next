@@ -1,0 +1,269 @@
+---
+title: "Building a Distributed Railway Booking System"
+description: "How I designed a high-concurrency booking backend handling segment-based seat allocation, distributed locking with Redis Lua scripts, event-driven workflows with Kafka, and CQRS with Elasticsearch — all within a modular monolith."
+date: "2025-12-15"
+tags: ["distributed-systems", "spring-boot", "redis", "kafka", "elasticsearch"]
+---
+
+![Train ticket booking application](/blog/train-ticket-booking-application.png)
+## Why Build This?
+
+Train ticket booking has constraints that most CRUD applications never face. Seats are finite, hundreds of users compete for the same inventory simultaneously, and — unlike flight booking — a single seat can be reused across segments of the journey.
+
+I built this system to learn how real distributed patterns work under pressure: atomic locking, event choreography, CQRS, and idempotent processing. The goal wasn't just to make it work — it was to understand *why* systems like IRCTC are architected the way they are.
+
+## The Architecture: Modular Monolith
+
+I deliberately chose a **modular monolith** over microservices. The system is a single deployable Spring Boot JAR, internally split into independent modules: User, Train, Booking, Payment, and Notification. Each module owns its domain and communicates with others through Kafka events — never through direct imports.
+
+Why not microservices? Because for a learning project, microservices mean spending 80% of time on infrastructure (Kubernetes, service mesh, distributed tracing) and 20% on actual distributed patterns. A modular monolith flips that ratio. And the key insight: every module *could* be extracted into its own service later because the Kafka boundary already exists.
+
+The discipline that makes this work: modules depend only on a shared `railway-common` library, never on each other. If the booking module needs train data, it receives it through a Kafka event — not by importing `TrainRepository`.
+
+## The Hardest Problem: Segment-Based Seat Inventory
+
+Unlike an airplane where a seat is either occupied or empty for the entire flight, a train seat is **reusable across segments**.
+
+Consider a train running Delhi → Jaipur → Ahmedabad → Mumbai:
+- Passenger A books Delhi → Jaipur (gets seat 15)
+- At Jaipur, seat 15 is **freed**
+- Passenger B can book Jaipur → Mumbai (gets the same seat 15)
+
+So when checking if seat 15 is available for "Jaipur → Ahmedabad", you need to check if anyone occupies it on any overlapping segment. The `seat_inventory` table tracks availability per segment:
+
+```sql
+CREATE TABLE seat_inventory (
+    id BIGSERIAL PRIMARY KEY,
+    train_run_id BIGINT NOT NULL,
+    coach_type VARCHAR(20) NOT NULL,
+    from_station_id BIGINT NOT NULL,
+    to_station_id BIGINT NOT NULL,
+    total_seats INT NOT NULL,
+    available_seats INT NOT NULL,
+    version INT NOT NULL DEFAULT 0  -- Optimistic locking
+);
+
+CREATE INDEX idx_seat_inv_lookup
+    ON seat_inventory(train_run_id, coach_type, from_station_id, to_station_id);
+```
+
+A booking from Delhi → Ahmedabad must decrement *two* segments (Delhi→Jaipur and Jaipur→Ahmedabad) but leave the Ahmedabad→Mumbai segment untouched. This is the fundamental data model that makes Indian railway booking work — and it's what makes concurrency control so critical.
+
+## Distributed Seat Locking with Redis Lua Scripts
+
+The core challenge: User A and User B both try to book the last seat at the same instant. Without coordination, both succeed and you've oversold a phantom seat.
+
+**Why not database locks?** Row-level locks hold connections open for the entire payment window (up to 10 minutes). With 1000 concurrent bookings, you'd exhaust your connection pool.
+
+The solution is a Redis Lua script that executes atomically:
+
+```lua
+-- Atomic seat lock script
+local availKey = KEYS[1]
+local lockKey = KEYS[2]
+local requested = tonumber(ARGV[1])
+local bookingId = ARGV[2]
+local ttl = tonumber(ARGV[3])
+
+local available = tonumber(redis.call('GET', availKey) or 0)
+
+if available >= requested then
+    redis.call('DECRBY', availKey, requested)
+    redis.call('SET', lockKey, bookingId, 'EX', ttl)
+    return 1  -- SUCCESS
+end
+
+return 0  -- FAILURE: not enough seats
+```
+
+Why Lua? Redis is single-threaded, but individual commands could interleave between your application's check-and-set operations. A Lua script runs as one atomic unit — no other command can execute in the middle.
+
+The Redis key structure makes lookups O(1):
+
+```
+seat-lock:{trainRunId}:{coachType}:{fromStn}:{toStn}:{bookingId} → "1" (TTL: 600s)
+seat-avail:{trainRunId}:{coachType}:{fromStn}:{toStn}            → "42"
+```
+
+The system uses **dual-layer safety**: Redis lock (fast, might lose data on crash) + PostgreSQL `@Version` optimistic lock (durable, catches any slip-through). Belt and suspenders.
+
+```java
+@Version
+private Integer version;
+
+// Repository: atomic decrement with version check
+@Modifying
+@Query("UPDATE SeatInventory s SET s.availableSeats = s.availableSeats - :count, "
+     + "s.version = s.version + 1 "
+     + "WHERE s.id = :id AND s.version = :expectedVersion")
+int decrementSeats(@Param("id") Long id,
+                   @Param("count") int count,
+                   @Param("expectedVersion") int version);
+```
+
+If the version changed between read and write, the update affects 0 rows — we know there was a conflict and can retry.
+
+## The Complete Booking Flow
+
+When a user clicks "Book Now", here's what happens:
+
+1. **Idempotency Check** — Has this exact request been processed before? Redis for fast in-flight detection, plus a DB unique constraint as the durable backstop.
+
+2. **Validation** — At most 6 passengers, valid station pair, train run is in SCHEDULED status.
+
+3. **Check Availability** — Redis cache first (0.1ms), PostgreSQL fallback (2ms) if cache miss.
+
+4. **Lock Seats in Redis** — Lua script atomically decrements availability and sets a 10-minute TTL lock.
+
+5. **Decrement DB with Optimistic Lock** — PostgreSQL UPDATE with `@Version` check. If version conflict (someone else modified the row between our read and write), release the Redis lock and retry.
+
+6. **Create Booking** — INSERT booking + passengers into PostgreSQL. Status: `PAYMENT_PENDING`. Generate a unique PNR.
+
+7. **Evict Cache** — Remove stale availability data from Redis. Next read re-populates from the DB.
+
+8. **Return PNR** — User has 10 minutes to complete payment before the lock auto-expires.
+
+## Event-Driven Architecture with Kafka
+
+Instead of direct service-to-service calls, modules communicate through Kafka topics. The booking module publishes `BOOKING_INITIATED` — it doesn't know or care who listens.
+
+This architecture means:
+- If the payment service is temporarily down, the booking still succeeds — payment processes when the consumer catches up
+- Adding a new notification channel (SMS, push) means adding a new consumer — zero changes to existing code
+- Each consumer is independently retryable with its own dead-letter topic
+
+Every Kafka message is wrapped in an `EventEnvelope` carrying metadata:
+
+```java
+public class EventEnvelope<T> {
+    private String eventId;          // UUID — deduplicate events
+    private String eventType;        // "BOOKING_CONFIRMED", "PAYMENT_SUCCESS"
+    private String aggregateId;      // Entity this event is about (e.g., PNR)
+    private String source;           // Which module published ("railway-booking")
+    private String correlationId;    // Trace one user action across events
+    private String idempotencyKey;   // Prevent double-processing on retries
+    private Instant timestamp;
+    private T payload;               // The actual event data
+}
+```
+
+This standardized envelope means every consumer can handle routing, deduplication, and tracing without knowing the payload structure upfront.
+
+### The Payment Flow
+
+```
+Booking created (PAYMENT_PENDING)
+  → User initiates payment
+  → MockPaymentGateway processes (90% success, 50-200ms delay)
+  → On success: publishes PAYMENT_SUCCESS to payment.events
+    → PaymentEventConsumer confirms booking, evicts caches
+    → NotificationConsumer sends confirmation
+  → On failure: publishes PAYMENT_FAILED
+    → Consumer restores seat inventory, releases Redis lock
+    → User can retry
+```
+
+### Cancellation & Waitlist Promotion (Choreography)
+
+The most complex event flow: a single cancellation triggers a chain reaction across three modules without any central orchestrator.
+
+```
+Booking cancelled → seat inventory restored
+  → BOOKING_CANCELLED published
+    → Payment module initiates refund (95% success)
+    → Booking module promotes next RAC → CONFIRMED
+      → Then promotes next WAITLISTED → RAC
+    → Notification module sends cancellation notice
+```
+
+Each consumer reacts independently. There's no saga coordinator to become a bottleneck. Adding "loyalty points refund" tomorrow means adding one new consumer — existing code stays untouched.
+
+## CQRS with Elasticsearch
+
+The read path for train search is completely separated from the write path. Writes go to PostgreSQL (source of truth). A Kafka-driven indexing pipeline builds denormalized documents in Elasticsearch for fast, full-text search.
+
+**Why separate stores?** Displaying a search result in PostgreSQL requires JOINing trains + routes + route_stations + seat_inventory + coaches. In Elasticsearch, one document read returns everything — no JOINs, sub-millisecond response.
+
+The document model: one ES document per (trainRunId, fromStation, toStation) journey option. Each document is fully denormalized:
+
+```json
+{
+  "trainRunId": 42,
+  "trainNumber": "12301",
+  "trainName": "Rajdhani Express",
+  "runDate": "2026-04-25",
+  "fromStationCode": "NDLS",
+  "fromStationName": "New Delhi",
+  "toStationCode": "ADI",
+  "toStationName": "Ahmedabad Junction",
+  "departureTime": "16:25",
+  "arrivalTime": "07:40",
+  "durationMinutes": 915,
+  "coachAvailabilities": [
+    { "coachType": "FIRST_AC", "availableSeats": 42, "totalSeats": 72 },
+    { "coachType": "SLEEPER", "availableSeats": 180, "totalSeats": 200 }
+  ],
+  "fares": [
+    { "coachType": "FIRST_AC", "baseFare": 3450.00 },
+    { "coachType": "SLEEPER", "baseFare": 750.00 }
+  ]
+}
+```
+
+A train with 5 stops creates C(5,2) = 10 documents — every possible origin-destination pair.
+
+Station search uses an **edge ngram** analyzer: typing "new d" instantly matches "New Delhi" through prefix tokenization. Coach type filtering uses ES **nested** queries to prevent cross-object false positives (without nested mapping, searching for "FIRST_AC with available > 0" could incorrectly match against SLEEPER's availability).
+
+The tradeoff is eventual consistency — there's a ~1-2 second lag between a booking changing seat counts in PostgreSQL and the search index reflecting the change. For train search, that's perfectly acceptable.
+
+## Caching Strategy
+
+The system uses three distinct Redis caching patterns, each chosen for a specific access pattern:
+
+**Write-Through (Seat Availability)** — Every time availability changes, both PostgreSQL and Redis are updated. The cache is always current. Critical because stale availability data means selling seats that don't exist.
+
+**Cache-Aside (PNR Status)** — Only populated on reads. On status changes, the cache entry is evicted (not updated), and the next read rebuilds it from the DB. Simpler for complex nested data like multi-passenger PNR responses.
+
+**Sliding Window (Rate Limiting)** — Redis sorted sets track request timestamps per user per endpoint. A Lua script atomically removes expired entries, counts remaining, and either allows or rejects:
+
+```lua
+-- Sliding window rate limiter
+local key = KEYS[1]
+local window = tonumber(ARGV[1])
+local limit = tonumber(ARGV[2])
+local now = tonumber(ARGV[3])
+
+redis.call('ZREMRANGEBYSCORE', key, 0, now - window)
+local count = redis.call('ZCARD', key)
+
+if count < limit then
+    redis.call('ZADD', key, now, now .. math.random())
+    redis.call('EXPIRE', key, window)
+    return limit - count - 1  -- remaining quota
+end
+
+return -1  -- rate limited
+```
+
+Booking creation is limited to 5 requests/minute; availability search to 30/minute.
+
+## Scheduled Jobs
+
+A `ThreadPoolTaskScheduler` (4 threads) runs background maintenance:
+
+- **Booking Cleanup** (every 60s): Fails abandoned `PAYMENT_PENDING` bookings past their 10-minute timeout and restores seat inventory.
+- **Train Run Generation** (2 AM daily): Materializes abstract schedules into concrete, bookable train runs for the next 7 days.
+- **ES Reindex** (3:30 AM daily): Full Elasticsearch reindex as a nightly safety net — Kafka handles real-time, this catches any drift.
+- **Stale Data Cleanup** (4 AM daily): Marks train runs older than 30 days as COMPLETED.
+
+## Key Takeaways
+
+1. **Pick the right consistency model for each operation.** Seat locking needs strong consistency (Redis Lua + DB optimistic lock). Search results tolerate eventual consistency (CQRS with 1-2s lag). PNR lookups use stale-while-revalidate (cache-aside with TTL).
+
+2. **Dual-layer safety beats single-point-of-failure.** Redis lock handles the fast path; PostgreSQL `@Version` is the durable backstop. If Redis crashes, the system is slower but still correct.
+
+3. **Event choreography scales better than orchestration** when modules need to remain independently deployable. No central coordinator means no single bottleneck — and adding new reactions is purely additive.
+
+4. **A modular monolith gives you microservice patterns without microservice overhead.** The Kafka boundaries enforce loose coupling at compile time. Extraction to separate services is an infrastructure decision, not an architectural one.
+
+The full source code with Docker Compose setup (PostgreSQL, Redis, Kafka, Elasticsearch) is available on [GitHub](https://github.com/Saurava69/IRCTC-Backend-monolith/tree/main).
