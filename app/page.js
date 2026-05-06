@@ -70,7 +70,7 @@ export default function Home() {
               <span className="text-sm text-muted mt-1 sm:mt-0">Jul 2025 — Present</span>
             </div>
             <p className="text-accent text-sm mb-2">SAP Labs India, Bengaluru</p>
-            <p className="text-muted text-sm mb-4">GIRAF RunAnyWhere — Cloud-native test orchestration platform on HANA Cloud</p>
+            <p className="text-muted text-sm mb-4">GIRAF RunAnyWhere  Cloud-native test orchestration platform on HANA Cloud</p>
             <ul className="space-y-2.5 text-muted">
               <li className="flex items-start gap-3">
                 <span className="text-border mt-2 text-xs">&#9656;</span>

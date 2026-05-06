@@ -1,6 +1,6 @@
 # sauravx.com
 
-Personal portfolio — dark, minimal, single-page.
+Personal portfolio  dark, minimal, single-page.
 
 ## Stack
 

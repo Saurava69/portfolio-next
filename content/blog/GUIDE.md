@@ -19,18 +19,18 @@ tags: ["tag1", "tag2", "tag3"]
 ---
 ```
 
-- `title` — Displayed as the page heading and in browser tab
-- `description` — Shows on the blog listing page and in Google search results
-- `date` — Format: YYYY-MM-DD. Posts are sorted by date (newest first)
-- `tags` — Array of strings. Displayed as pills on the post
+- `title`  Displayed as the page heading and in browser tab
+- `description`  Shows on the blog listing page and in Google search results
+- `date`  Format: YYYY-MM-DD. Posts are sorted by date (newest first)
+- `tags`  Array of strings. Displayed as pills on the post
 
 ## Markdown Syntax
 
 ### Headings
 
 ```markdown
-## Section Title (h2) — appears in Table of Contents
-### Subsection (h3) — appears indented in TOC
+## Section Title (h2)  appears in Table of Contents
+### Subsection (h3)  appears indented in TOC
 ```
 
 Only use `##` and `###`. Don't use `#` (that's the post title).
@@ -198,12 +198,12 @@ After creating your post:
 
 1. Save the `.mdx` file in `content/blog/`
 2. Run `npm run build` to verify it renders correctly
-3. Push to GitHub — the sitemap updates automatically
+3. Push to GitHub  the sitemap updates automatically
 4. The post appears on `/blog` and gets its own URL at `/blog/your-slug/`
 
 ## Notes
 
 - The Table of Contents is auto-generated from your `##` and `###` headings
 - SEO metadata (OG tags, canonical URL, BlogPosting schema) is auto-generated from your frontmatter
-- No need to edit the sitemap — it regenerates on every build
+- No need to edit the sitemap  it regenerates on every build
 - HTML tags (iframe, video) work directly in the markdown
