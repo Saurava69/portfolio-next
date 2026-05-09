@@ -14,6 +14,7 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
+  increment,
 } from "firebase/firestore";
 
 export default function Comments({ slug, title }) {
@@ -26,6 +27,9 @@ export default function Comments({ slug, title }) {
   const [replySubmitting, setReplySubmitting] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [editContent, setEditContent] = useState("");
+  const [optimisticLikes, setOptimisticLikes] = useState({});
+  const [animatingId, setAnimatingId] = useState(null);
+  const likeTimers = useState({})[0];
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -55,6 +59,7 @@ export default function Comments({ slug, title }) {
           ...doc.data(),
         }));
         setComments(data);
+        setOptimisticLikes({});
       });
       return unsubscribe;
     } catch {
@@ -90,6 +95,7 @@ export default function Comments({ slug, title }) {
         name: user.displayName || "Anonymous",
         email: user.email || "",
         photoURL: user.photoURL || "",
+        likes: {},
         createdAt: serverTimestamp(),
       });
       setContent("");
@@ -113,6 +119,7 @@ export default function Comments({ slug, title }) {
         name: user.displayName || "Anonymous",
         email: user.email || "",
         photoURL: user.photoURL || "",
+        likes: {},
         createdAt: serverTimestamp(),
       });
       setReplyTo(null);
@@ -145,6 +152,42 @@ export default function Comments({ slug, title }) {
       await deleteDoc(doc(db, "comments", commentId));
     } catch {
     }
+  }
+
+  async function handleLike(commentId, likes) {
+    if (!user) {
+      try {
+        const { auth, googleProvider } = getFirebaseAuth();
+        await signInWithPopup(auth, googleProvider);
+      } catch {
+      }
+      return;
+    }
+    const emailKey = user.email.replace(/\./g, "_");
+    const dbCount = (likes && likes[emailKey]) || 0;
+    const currentCount = optimisticLikes[commentId] !== undefined ? optimisticLikes[commentId] : dbCount;
+    if (currentCount >= 50) return;
+
+    const newCount = currentCount + 1;
+    setOptimisticLikes((prev) => ({ ...prev, [commentId]: newCount }));
+    setAnimatingId(commentId);
+    setTimeout(() => setAnimatingId(null), 150);
+
+    if (likeTimers[commentId]) clearTimeout(likeTimers[commentId]);
+    likeTimers[commentId] = setTimeout(async () => {
+      try {
+        const { db } = getFirebaseAuth();
+        await updateDoc(doc(db, "comments", commentId), {
+          [`likes.${emailKey}`]: newCount,
+        });
+      } catch {
+      }
+    }, 500);
+  }
+
+  function getTotalLikes(likes) {
+    if (!likes || typeof likes !== "object") return 0;
+    return Object.values(likes).reduce((sum, n) => sum + (Number(n) || 0), 0);
   }
 
   function formatDate(timestamp) {
@@ -290,6 +333,33 @@ export default function Comments({ slug, title }) {
           ) : (
             <div className="text-sm text-muted leading-relaxed whitespace-pre-wrap">{formatContent(comment.content)}</div>
           )}
+
+          <div className="mt-3 flex items-center gap-1">
+            {(() => {
+              const emailKey = user ? user.email.replace(/\./g, "_") : null;
+              const dbCount = emailKey && comment.likes ? (comment.likes[emailKey] || 0) : 0;
+              const myCount = optimisticLikes[comment.id] !== undefined ? optimisticLikes[comment.id] : dbCount;
+              const dbTotal = getTotalLikes(comment.likes);
+              const total = dbTotal + (optimisticLikes[comment.id] !== undefined ? optimisticLikes[comment.id] - dbCount : 0);
+              return (
+                <button
+                  onClick={() => handleLike(comment.id, comment.likes)}
+                  className="flex items-center gap-1 text-xs text-muted hover:text-red-500 transition-colors"
+                >
+                  <svg
+                    className={`w-4 h-4 transition-transform ${animatingId === comment.id ? "scale-125" : "scale-100"}`}
+                    viewBox="0 0 24 24"
+                    fill={myCount > 0 ? "currentColor" : "none"}
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                  <span>{total || ""}</span>
+                </button>
+              );
+            })()}
+          </div>
         </div>
 
         {replyTo === comment.id && (

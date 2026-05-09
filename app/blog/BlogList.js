@@ -96,10 +96,14 @@ export default function BlogList({ posts }) {
 }
 
 function PostCard({ post, external }) {
+  const [showAllTags, setShowAllTags] = useState(false);
+  const visibleTags = showAllTags ? post.tags : post.tags.slice(0, 3);
+  const hiddenCount = post.tags.length - 3;
+
   return (
     <>
       {post.image && (
-        <div className="relative w-32 h-32 sm:w-40 sm:h-40 shrink-0 bg-card">
+        <div className="relative w-32 sm:w-44 shrink-0 bg-card self-stretch">
           {post.source === "local" ? (
             <Image
               src={post.image}
@@ -111,7 +115,7 @@ function PostCard({ post, external }) {
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover absolute inset-0"
             />
           )}
         </div>
@@ -144,8 +148,8 @@ function PostCard({ post, external }) {
           </p>
         )}
         {post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-3">
-            {post.tags.map((tag) => (
+          <div className="flex flex-wrap items-center gap-2 mt-3">
+            {visibleTags.map((tag) => (
               <span
                 key={tag}
                 className="text-xs text-muted border border-border px-2 py-0.5 rounded"
@@ -153,6 +157,22 @@ function PostCard({ post, external }) {
                 {tag}
               </span>
             ))}
+            {hiddenCount > 0 && !showAllTags && (
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowAllTags(true); }}
+                className="text-xs text-accent hover:text-foreground transition-colors"
+              >
+                +{hiddenCount} more
+              </button>
+            )}
+            {showAllTags && hiddenCount > 0 && (
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShowAllTags(false); }}
+                className="text-xs text-accent hover:text-foreground transition-colors"
+              >
+                show less
+              </button>
+            )}
           </div>
         )}
       </div>

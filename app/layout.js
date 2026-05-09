@@ -3,19 +3,27 @@
 import { useState, useEffect } from "react";
 import "./globals.css";
 import SearchModal from "./SearchModal";
-import { initAnalytics } from "@/lib/firebase";
+import { initAnalytics, getFirebaseAuth } from "@/lib/firebase";
+import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [user, setUser] = useState(null);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("theme") || "dark";
     setTheme(saved);
     document.documentElement.dataset.theme = saved;
     initAnalytics();
+    try {
+      const { auth } = getFirebaseAuth();
+      return onAuthStateChanged(auth, (u) => setUser(u));
+    } catch {
+    }
   }, []);
 
   function toggleTheme() {
@@ -23,6 +31,23 @@ export default function RootLayout({ children }) {
     setTheme(next);
     localStorage.setItem("theme", next);
     document.documentElement.dataset.theme = next;
+  }
+
+  async function handleLogin() {
+    try {
+      const { auth, googleProvider } = getFirebaseAuth();
+      await signInWithPopup(auth, googleProvider);
+    } catch {
+    }
+  }
+
+  async function handleLogout() {
+    try {
+      const { auth } = getFirebaseAuth();
+      await signOut(auth);
+      setUser(null);
+    } catch {
+    }
   }
 
   const navLinks = [
@@ -110,10 +135,62 @@ export default function RootLayout({ children }) {
                   )}
                 </button>
               </li>
+              <li>
+                {user ? (
+                  <div className="relative">
+                    <button onClick={() => setShowUserMenu(!showUserMenu)} className="flex items-center">
+                      <img src={user.photoURL} alt="" className="w-7 h-7 rounded-full" referrerPolicy="no-referrer" />
+                    </button>
+                    {showUserMenu && (
+                      <div className="absolute right-0 top-9 bg-card border border-border rounded-lg shadow-lg py-2 px-4 z-50">
+                        <p className="text-xs text-muted mb-2 whitespace-nowrap">{user.displayName}</p>
+                        <button
+                          onClick={() => { handleLogout(); setShowUserMenu(false); }}
+                          className="text-xs text-muted hover:text-foreground transition-colors whitespace-nowrap"
+                        >
+                          Sign out
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    onClick={handleLogin}
+                    className="text-sm text-muted hover:text-foreground transition-colors"
+                  >
+                    Sign in
+                  </button>
+                )}
+              </li>
             </ul>
 
             <div className="flex items-center gap-2 md:hidden">
               <SearchModal />
+              {user ? (
+                <div className="relative">
+                  <button onClick={() => setShowUserMenu(!showUserMenu)} className="p-1">
+                    <img src={user.photoURL} alt="" className="w-6 h-6 rounded-full" referrerPolicy="no-referrer" />
+                  </button>
+                  {showUserMenu && (
+                    <div className="absolute right-0 top-9 bg-card border border-border rounded-lg shadow-lg py-2 px-4 z-50">
+                      <p className="text-xs text-muted mb-2 whitespace-nowrap">{user.displayName}</p>
+                      <button
+                        onClick={() => { handleLogout(); setShowUserMenu(false); }}
+                        className="text-xs text-muted hover:text-foreground transition-colors whitespace-nowrap"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  onClick={handleLogin}
+                  className="text-xs text-muted hover:text-foreground transition-colors p-2"
+                >
+                  Sign in
+                </button>
+              )}
               <button
                 onClick={toggleTheme}
                 className="text-muted hover:text-foreground transition-colors p-2"

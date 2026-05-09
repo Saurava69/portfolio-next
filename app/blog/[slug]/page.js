@@ -6,6 +6,8 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import Link from "next/link";
 import Comments from "./Comments";
+import PostLikes from "./PostLikes";
+import Tags from "./Tags";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -107,15 +109,8 @@ export default async function BlogPost({ params }) {
         <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{post.title}</h1>
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-sm text-muted">{post.date}</span>
-          {post.tags.length > 0 && (
-            <div className="flex gap-2">
-              {post.tags.map((tag) => (
-                <span key={tag} className="text-xs text-muted border border-border px-2 py-0.5 rounded">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          <Tags tags={post.tags} />
+          <PostLikes slug={slug} />
         </div>
       </header>
 
