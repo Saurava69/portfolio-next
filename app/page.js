@@ -1,6 +1,8 @@
 import { getAllPosts } from "@/lib/blog";
 import { getMediumPosts } from "@/lib/medium";
 import Link from "next/link";
+import TypeWriter from "@/app/components/TypeWriter";
+import FadeIn from "@/app/components/FadeIn";
 
 export const metadata = {
   title: "Saurav Kumar - Software Engineer",
@@ -34,42 +36,63 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-6">
       {/* Hero */}
-      <section className="min-h-[80vh] flex flex-col justify-center py-20">
-        <p className="text-muted text-sm mb-4 tracking-wide uppercase">Software Engineer</p>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6">
-          Hi, I&apos;m Saurav Kumar.
-        </h1>
-        <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-10">
-          Associate Developer at SAP Labs India. I build scalable cloud-native applications with Java, React, and Node.js focused on distributed systems, performance, and clean architecture.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="https://github.com/saurava69/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/sauravkumar25"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={`${basePath}/Resume.pdf`}
-            download
-            className="text-sm text-background bg-foreground px-5 py-2.5 rounded-md hover:bg-accent hover:text-white transition-colors"
-          >
-            Download Resume
-          </a>
+      <section className="min-h-[80vh] flex flex-col justify-center py-20 relative">
+        {/* Animated background orbs - break out to full viewport width */}
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[calc(100vw-3rem)] max-w-[100vw-3rem] pointer-events-none overflow-hidden" aria-hidden="true">
+          <div
+            className="absolute top-[-10%] right-[5%] w-[400px] h-[400px] rounded-full bg-accent/20 animate-drift"
+            style={{ filter: "blur(80px)" }}
+          />
+          <div
+            className="absolute bottom-[-15%] left-[5%] w-[500px] h-[500px] rounded-full bg-purple-500/15 animate-drift-reverse"
+            style={{ filter: "blur(100px)" }}
+          />
+          <div
+            className="absolute top-[30%] left-[45%] w-[300px] h-[300px] rounded-full bg-emerald-500/10 animate-pulse-glow"
+            style={{ filter: "blur(60px)" }}
+          />
+        </div>
+
+        <div className="relative z-10">
+          <div className="text-sm mb-4 tracking-wide uppercase text-muted">
+            <TypeWriter strings={["Backend Engineer", "Full Stack Developer"]} className="text-accent" />
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground leading-tight mb-6">
+            Hi, I&apos;m Saurav Kumar.
+          </h1>
+          <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-10">
+            Associate Developer at SAP Labs India. I build scalable cloud-native applications with Java, React, and Node.js focused on distributed systems, performance, and clean architecture.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="https://github.com/saurava69/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sauravkumar25"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted border border-border px-5 py-2.5 rounded-md hover:text-foreground hover:border-foreground transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={`${basePath}/Resume.pdf`}
+              download
+              className="text-sm text-background bg-foreground px-5 py-2.5 rounded-md hover:bg-accent hover:text-white transition-colors"
+            >
+              Download Resume
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Experience */}
+      <FadeIn>
       <section id="experience" className="py-20 border-t border-border">
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Experience</h2>
 
@@ -139,8 +162,10 @@ configuration system, and branch-based execution</span>
           </article>
         </div>
       </section>
+      </FadeIn>
 
       {/* Education */}
+      <FadeIn delay={100}>
       <section id="education" className="py-20 border-t border-border">
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Education</h2>
 
@@ -173,12 +198,16 @@ configuration system, and branch-based execution</span>
           </article>
         </div>
       </section>
+      </FadeIn>
 
       {/* Projects */}
       <section id="projects" className="py-20 border-t border-border">
+        <FadeIn>
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Projects</h2>
+        </FadeIn>
 
         <div className="space-y-8">
+          <FadeIn>
           <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
               <h3 className="text-xl font-semibold text-foreground">Railway Ticket Booking System</h3>
@@ -220,7 +249,9 @@ configuration system, and branch-based execution</span>
               ))}
             </div>
           </article>
+          </FadeIn>
 
+          <FadeIn delay={150}>
           <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
               <h3 className="text-xl font-semibold text-foreground">Saurity</h3>
@@ -268,7 +299,9 @@ configuration system, and branch-based execution</span>
               ))}
             </div>
           </article>
+          </FadeIn>
 
+          <FadeIn delay={300}>
           <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
               <h3 className="text-xl font-semibold text-foreground">ChatWave</h3>
@@ -306,10 +339,12 @@ configuration system, and branch-based execution</span>
               ))}
             </div>
           </article>
+          </FadeIn>
         </div>
       </section>
 
       {/* Skills */}
+      <FadeIn>
       <section id="skills" className="py-20 border-t border-border">
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Skills</h2>
 
@@ -332,8 +367,10 @@ configuration system, and branch-based execution</span>
           </div>
         </div>
       </section>
+      </FadeIn>
 
       {/* Blog */}
+      <FadeIn>
       <section id="blog" className="py-20 border-t border-border">
         <div className="flex justify-between items-baseline mb-12">
           <h2 className="text-sm uppercase tracking-wider text-muted">Latest Posts</h2>
@@ -372,8 +409,10 @@ configuration system, and branch-based execution</span>
           ))}
         </div>
       </section>
+      </FadeIn>
 
       {/* Contact */}
+      <FadeIn delay={100}>
       <section id="contact" className="py-20 border-t border-border">
         <h2 className="text-sm uppercase tracking-wider text-muted mb-12">Contact</h2>
 
@@ -418,6 +457,7 @@ configuration system, and branch-based execution</span>
           </div>
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
     initAnalytics();
     try {
       const { auth } = getFirebaseAuth();
-      return onAuthStateChanged(auth, (u) => setUser(u));
+      return onAuthStateChanged(auth, (u) => { setUser(u); setAuthLoading(false); });
     } catch {
     }
   }, []);
@@ -136,7 +137,9 @@ export default function RootLayout({ children }) {
                 </button>
               </li>
               <li>
-                {user ? (
+                {authLoading ? (
+                  <div className="w-7 h-7 rounded-full bg-border animate-pulse" />
+                ) : user ? (
                   <div className="relative">
                     <button onClick={() => setShowUserMenu(!showUserMenu)} className="flex items-center">
                       <img src={user.photoURL} alt="" className="w-7 h-7 rounded-full" referrerPolicy="no-referrer" />
@@ -166,7 +169,9 @@ export default function RootLayout({ children }) {
 
             <div className="flex items-center gap-2 md:hidden">
               <SearchModal />
-              {user ? (
+              {authLoading ? (
+                <div className="w-6 h-6 rounded-full bg-border animate-pulse" />
+              ) : user ? (
                 <div className="relative">
                   <button onClick={() => setShowUserMenu(!showUserMenu)} className="p-1">
                     <img src={user.photoURL} alt="" className="w-6 h-6 rounded-full" referrerPolicy="no-referrer" />
