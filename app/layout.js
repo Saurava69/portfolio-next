@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./globals.css";
+import SearchModal from "./SearchModal";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -88,6 +89,9 @@ export default function RootLayout({ children }) {
                 </a>
               </li>
               <li>
+                <SearchModal />
+              </li>
+              <li>
                 <button
                   onClick={toggleTheme}
                   className="text-muted hover:text-foreground transition-colors p-1"
@@ -107,6 +111,7 @@ export default function RootLayout({ children }) {
             </ul>
 
             <div className="flex items-center gap-2 md:hidden">
+              <SearchModal />
               <button
                 onClick={toggleTheme}
                 className="text-muted hover:text-foreground transition-colors p-2"
