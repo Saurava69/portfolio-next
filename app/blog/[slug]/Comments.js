@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getFirebaseAuth } from "@/lib/firebase";
 import { signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
+import { CommentSkeleton } from "@/app/components/Skeleton";
 import {
   collection,
   addDoc,
@@ -19,6 +20,7 @@ import {
 
 export default function Comments({ slug, title }) {
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [content, setContent] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -60,6 +62,7 @@ export default function Comments({ slug, title }) {
         }));
         setComments(data);
         setOptimisticLikes({});
+        setLoading(false);
       });
       return unsubscribe;
     } catch {
@@ -267,10 +270,10 @@ export default function Comments({ slug, title }) {
     const isAdmin = user && user.email === "sauravx25@gmail.com";
 
     return (
-      <div key={comment.id} className={depth > 0 ? "ml-6 mt-4" : ""}>
-        <div className="border border-border rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
+      <div key={comment.id} className={depth > 0 ? "ml-4 sm:ml-6 mt-4" : ""}>
+        <div className="border border-border rounded-lg p-3 sm:p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+            <div className="flex items-center gap-2 flex-wrap">
               {comment.photoURL && (
                 <img src={comment.photoURL} alt="" className="w-5 h-5 rounded-full" referrerPolicy="no-referrer" />
               )}
@@ -363,7 +366,7 @@ export default function Comments({ slug, title }) {
         </div>
 
         {replyTo === comment.id && (
-          <form onSubmit={(e) => handleReply(e, comment.id)} className="ml-6 mt-3 space-y-3">
+          <form onSubmit={(e) => handleReply(e, comment.id)} className="ml-4 sm:ml-6 mt-3 space-y-3">
             <div className="border border-border rounded-lg overflow-hidden focus-within:border-accent transition-colors">
               <div className="flex items-center gap-2 px-3 py-1.5 border-b border-border bg-background">
                 <button
@@ -443,11 +446,16 @@ export default function Comments({ slug, title }) {
     <div className="mt-16 pt-8 border-t border-border">
       <h2 className="text-lg font-semibold text-foreground mb-6">Comments</h2>
 
-      {topLevel.length > 0 && (
+      {loading ? (
+        <div className="space-y-4 mb-10">
+          <CommentSkeleton />
+          <CommentSkeleton />
+        </div>
+      ) : topLevel.length > 0 ? (
         <div className="space-y-4 mb-10">
           {topLevel.map((c) => renderComment(c))}
         </div>
-      )}
+      ) : null}
 
       {!user ? (
         <div className="border border-border rounded-lg p-6 space-y-4">

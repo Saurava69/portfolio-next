@@ -5,9 +5,12 @@ import { getFirebaseAuth } from "@/lib/firebase";
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 
+import { PostLikeSkeleton } from "@/app/components/Skeleton";
+
 export default function PostLikes({ slug }) {
   const [likes, setLikes] = useState({});
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [optimistic, setOptimistic] = useState(null);
   const [animating, setAnimating] = useState(false);
   const timerRef = useRef(null);
@@ -29,6 +32,7 @@ export default function PostLikes({ slug }) {
       return onSnapshot(doc(db, "postLikes", slug), (snap) => {
         setLikes(snap.exists() ? snap.data().likes || {} : {});
         setOptimistic(null);
+        setLoading(false);
       });
     } catch {
       return () => {};
@@ -67,6 +71,8 @@ export default function PostLikes({ slug }) {
       }
     }, 500);
   }
+
+  if (loading) return <PostLikeSkeleton />;
 
   return (
     <button

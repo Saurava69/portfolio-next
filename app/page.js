@@ -1,3 +1,7 @@
+import { getAllPosts } from "@/lib/blog";
+import { getMediumPosts } from "@/lib/medium";
+import Link from "next/link";
+
 export const metadata = {
   title: "Saurav Kumar - Software Engineer",
   description: "Associate Developer at SAP Labs India. Full Stack Developer specializing in Cloud Computing, AI/ML, React, Node.js, Java, and Python.",
@@ -21,6 +25,12 @@ export const metadata = {
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Home() {
+  const localPosts = getAllPosts().map((p) => ({ ...p, source: "local" }));
+  const mediumPosts = getMediumPosts().map((p) => ({ ...p, source: "medium" }));
+  const recentPosts = [...localPosts, ...mediumPosts]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+
   return (
     <div className="max-w-5xl mx-auto px-6">
       {/* Hero */}
@@ -320,6 +330,46 @@ configuration system, and branch-based execution</span>
             <h3 className="text-xs uppercase tracking-wider text-muted mb-3">Cloud & DevOps</h3>
             <p className="text-foreground">Docker, Kubernetes, AWS (EC2, S3, SQS), Jenkins, Git</p>
           </div>
+        </div>
+      </section>
+
+      {/* Blog */}
+      <section id="blog" className="py-20 border-t border-border">
+        <div className="flex justify-between items-baseline mb-12">
+          <h2 className="text-sm uppercase tracking-wider text-muted">Latest Posts</h2>
+          <Link href="/blog" className="text-sm text-accent hover:text-foreground transition-colors">
+            View all &rarr;
+          </Link>
+        </div>
+
+        <div className="space-y-6">
+          {recentPosts.map((post) => (
+            <article key={post.slug || post.url} className="border border-border rounded-lg p-5 sm:p-6 hover:border-muted transition-colors">
+              {post.source === "local" ? (
+                <Link href={`/blog/${post.slug}`} className="block">
+                  <h3 className="text-lg font-semibold text-foreground hover:text-accent transition-colors mb-2">{post.title}</h3>
+                  {post.description && <p className="text-sm text-muted line-clamp-2 mb-3">{post.description}</p>}
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-muted">{post.date}</span>
+                    {post.tags && post.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="text-xs text-muted border border-border px-2 py-0.5 rounded">{tag}</span>
+                    ))}
+                  </div>
+                </Link>
+              ) : (
+                <a href={post.url} target="_blank" rel="noopener noreferrer" className="block">
+                  <h3 className="text-lg font-semibold text-foreground hover:text-accent transition-colors mb-2 flex items-center gap-2">
+                    {post.title}
+                    <svg className="w-3.5 h-3.5 text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </h3>
+                  {post.description && <p className="text-sm text-muted line-clamp-2 mb-3">{post.description}</p>}
+                  <span className="text-xs text-muted">{post.date}</span>
+                </a>
+              )}
+            </article>
+          ))}
         </div>
       </section>
 
