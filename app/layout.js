@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import "./globals.css";
 import SearchModal from "./SearchModal";
+import { initAnalytics } from "@/lib/firebase";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     const saved = localStorage.getItem("theme") || "dark";
     setTheme(saved);
     document.documentElement.dataset.theme = saved;
+    initAnalytics();
   }, []);
 
   function toggleTheme() {

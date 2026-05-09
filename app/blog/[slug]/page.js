@@ -5,6 +5,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import Link from "next/link";
+import Comments from "./Comments";
 
 export async function generateStaticParams() {
   const slugs = getAllSlugs();
@@ -140,6 +141,8 @@ export default async function BlogPost({ params }) {
         className="blog-content"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
       />
+
+      <Comments slug={slug} title={post.title} />
     </div>
   );
 }
