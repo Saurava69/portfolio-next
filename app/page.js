@@ -37,8 +37,8 @@ export default function Home() {
     <div className="max-w-5xl mx-auto px-6">
       {/* Hero */}
       <section className="min-h-[80vh] flex flex-col justify-center py-20 relative">
-        {/* Animated background orbs - break out to full viewport width */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[calc(100vw-3rem)] max-w-[100vw-3rem] pointer-events-none overflow-hidden" aria-hidden="true">
+        {/* Animated background orbs - full viewport width */}
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none overflow-hidden" aria-hidden="true">
           <div
             className="absolute top-[-10%] right-[5%] w-[400px] h-[400px] rounded-full bg-accent/20 animate-drift"
             style={{ filter: "blur(80px)" }}
