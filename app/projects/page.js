@@ -1,10 +1,10 @@
 export const metadata = {
   title: 'Projects | Saurav Kumar',
-  description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis and ChatWave real-time chat application with React, Node.js, Socket.io.',
+  description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
   alternates: { canonical: 'https://www.sauravx.com/projects/' },
   openGraph: {
     title: 'Projects | Saurav Kumar',
-    description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis and ChatWave real-time chat application with React, Node.js, Socket.io.',
+    description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
     url: 'https://www.sauravx.com/projects/',
     type: 'website',
     siteName: 'Saurav Kumar',
@@ -53,6 +53,88 @@ export default function Projects() {
           </ul>
           <div className="flex flex-wrap gap-2">
             {["Spring Boot", "PostgreSQL", "Redis", "Kafka", "Elasticsearch", "React", "Docker"].map((t) => (
+              <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                {t}
+              </span>
+            ))}
+          </div>
+        </article>
+
+        <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+            <h2 className="text-xl font-semibold text-foreground">LearnHLD &mdash; System Design Simulator</h2>
+            <div className="flex gap-4 mt-1 sm:mt-0">
+              <a
+                href="https://learnhld.sauravx.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
+              >
+                Website &rarr;
+              </a>
+            </div>
+          </div>
+          <p className="text-muted leading-relaxed mb-4">
+            Open-source system design interview simulator &mdash; drag real infrastructure components onto a canvas, simulate production-scale traffic, and get scored like a real interviewer would evaluate you.
+          </p>
+          <ul className="space-y-2.5 text-muted mb-6">
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>30 infrastructure components with verified benchmarks (QPS, latency) and a traffic simulator using Kahn&apos;s topological sort for fan-in/fan-out QPS accumulation and bottleneck detection</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>5-category scoring engine (scalability, availability, latency, cost, trade-offs) covering 35 design problems from URL Shortener to TikTok and Kafka</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Interview practice mode with phased 45-minute timer, integrated learning path sourced from the system-design-primer, and 14 trade-off decision cards</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Built with Next.js 16, React 19, ReactFlow v12, Zustand; Fastify + Prisma backend with Google OAuth and AI chat</span>
+            </li>
+          </ul>
+          <div className="flex flex-wrap gap-2">
+            {["Next.js 16", "React 19", "TypeScript", "ReactFlow", "Zustand", "Tailwind v4", "Fastify", "Prisma"].map((t) => (
+              <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                {t}
+              </span>
+            ))}
+          </div>
+        </article>
+
+        <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+            <h2 className="text-xl font-semibold text-foreground">Medium API (Unofficial)</h2>
+            <a
+              href="https://github.com/Saurava69/Medium-api"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-accent underline underline-offset-3 hover:text-foreground mt-1 sm:mt-0"
+            >
+              View on GitHub &rarr;
+            </a>
+          </div>
+          <p className="text-muted leading-relaxed mb-4">
+            Self-hosted REST API to fetch articles and metadata from Medium.com &mdash; pure Go, no browser dependencies, no Medium credentials required.
+          </p>
+          <ul className="space-y-2.5 text-muted mb-6">
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Article, user, tag, and search endpoints backed by Medium&apos;s public RSS feeds &mdash; no headless browser, no Cloudflare bypass needed</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>SQLite-backed API key management with admin endpoints, per-key usage tracking, expiry support, and bearer-token admin auth</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Per-IP rate limiting and in-memory response caching (sub-10ms cached responses), Dockerized for one-command deploys</span>
+            </li>
+          </ul>
+          <div className="flex flex-wrap gap-2">
+            {["Go", "SQLite", "Docker", "REST"].map((t) => (
               <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
                 {t}
               </span>
