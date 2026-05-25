@@ -24,7 +24,7 @@ export default function Skills() {
         </div>
         <div>
           <h2 className="text-xs uppercase tracking-wider text-muted mb-3">Backend & Frameworks</h2>
-          <p className="text-foreground">Spring Boot, Node.js, SAP CAP, Express, React, Elasticsearch</p>
+          <p className="text-foreground">Spring Boot, Node.js, SAP CAP, Express, React, Elasticsearch, LangGraph</p>
         </div>
         <div>
           <h2 className="text-xs uppercase tracking-wider text-muted mb-3">Databases & Messaging</h2>
@@ -33,6 +33,10 @@ export default function Skills() {
         <div>
           <h2 className="text-xs uppercase tracking-wider text-muted mb-3">Cloud & DevOps</h2>
           <p className="text-foreground">Docker, Kubernetes, AWS (EC2, S3, SQS), Jenkins, Git</p>
+        </div>
+        <div>
+          <h2 className="text-xs uppercase tracking-wider text-muted mb-3">Core Concepts</h2>
+          <p className="text-foreground">Microservices, Concurrency, OOP, DSA, Networking</p>
         </div>
       </div>
     </div>

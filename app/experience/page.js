@@ -40,7 +40,11 @@ export default function Experience() {
             </li>
             <li className="flex items-start gap-3">
               <span className="text-border mt-2 text-xs">&#9656;</span>
-              <span>Added async GenAI failure classification and auto-healing (85% accuracy), reducing manual triage by 60%</span>
+              <span>Designed an agentic LLM Gateway with mode-aware agents, tool-use orchestration over 50+ CAP tools, prompt caching, and a session-scoped fact store, powering async failure classification at 93.5% accuracy avg and auto-healing, reducing manual triage by 60%</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Built a streaming SSE chat pipeline on the gateway with conversation history and shareable chat links, enabling an in-app assistant for iterative deep-dives over execution data</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-border mt-2 text-xs">&#9656;</span>
@@ -48,7 +52,7 @@ export default function Experience() {
             </li>
           </ul>
           <div className="flex flex-wrap gap-2 mt-5">
-            {["SAP CAP", "Spring Boot", "React", "OData", "SAP BTP", "HANA Cloud", "GenAI"].map((t) => (
+            {["SAP CAP", "Spring Boot", "React", "OData", "SAP BTP", "HANA Cloud", "LangGraph"].map((t) => (
               <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
                 {t}
               </span>
