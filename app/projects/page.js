@@ -73,7 +73,7 @@ export default function Projects() {
                 GitHub &rarr;
               </a>
               <a
-                href="https://openchess.sauravx.com/"
+                href="https://chess.sauravx.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
