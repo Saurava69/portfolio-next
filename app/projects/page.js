@@ -1,10 +1,10 @@
 export const metadata = {
   title: 'Projects | Saurav Kumar',
-  description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
+  description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; OpenChess Analyzer with Stockfish-powered analysis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
   alternates: { canonical: 'https://www.sauravx.com/projects/' },
   openGraph: {
     title: 'Projects | Saurav Kumar',
-    description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
+    description: 'Railway Ticket Booking System with Spring Boot, Kafka, Redis; OpenChess Analyzer with Stockfish-powered analysis; LearnHLD system design simulator with Next.js and ReactFlow; Medium API in Go; Saurity WordPress security; ChatWave real-time chat.',
     url: 'https://www.sauravx.com/projects/',
     type: 'website',
     siteName: 'Saurav Kumar',
@@ -53,6 +53,54 @@ export default function Projects() {
           </ul>
           <div className="flex flex-wrap gap-2">
             {["Spring Boot", "PostgreSQL", "Redis", "Kafka", "Elasticsearch", "React", "Docker"].map((t) => (
+              <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
+                {t}
+              </span>
+            ))}
+          </div>
+        </article>
+
+        <article className="border border-border rounded-lg p-6 sm:p-8 hover:border-muted transition-colors">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-4">
+            <h2 className="text-xl font-semibold text-foreground">OpenChess Analyzer</h2>
+            <div className="flex gap-4 mt-1 sm:mt-0">
+              <a
+                href="https://github.com/Saurava69/openchess-analyzer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
+              >
+                GitHub &rarr;
+              </a>
+              <a
+                href="https://openchess.sauravx.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent underline underline-offset-3 hover:text-foreground"
+              >
+                Live Demo &rarr;
+              </a>
+            </div>
+          </div>
+          <p className="text-muted leading-relaxed mb-4">
+            Full-stack chess analysis platform with Stockfish-powered move evaluation, blunder detection, and personal game archives supporting analysis of 1000+ games.
+          </p>
+          <ul className="space-y-2.5 text-muted mb-6">
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Stockfish-powered move evaluation with real-time analysis and blunder detection for chess improvement tracking</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Personal game archives with support for analyzing 1000+ games and tracking performance over time</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-border mt-2 text-xs">&#9656;</span>
+              <span>Interactive gameplay and analysis workflows enabling real-time game review and position exploration</span>
+            </li>
+          </ul>
+          <div className="flex flex-wrap gap-2">
+            {["React", "Node.js", "Stockfish", "Chess.js", "PostgreSQL", "WebSocket"].map((t) => (
               <span key={t} className="text-xs text-muted border border-border px-2.5 py-1 rounded">
                 {t}
               </span>
