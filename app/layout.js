@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Script from "next/script";
 import "./globals.css";
 import SearchModal from "./SearchModal";
 import { initAnalytics, getFirebaseAuth } from "@/lib/firebase";
@@ -89,14 +88,13 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+        {/* Google AdSense — in <head> as required by Google */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496095498271142"
+          crossOrigin="anonymous"
+        />
       </head>
-
-      {/* Google AdSense — loads on every page after interactive */}
-      <Script
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496095498271142"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-      />
 
       <body className="antialiased">
         <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
