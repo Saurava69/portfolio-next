@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Script from "next/script";
 import "./globals.css";
 import SearchModal from "./SearchModal";
 import { initAnalytics, getFirebaseAuth } from "@/lib/firebase";
@@ -88,12 +89,8 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-        {/* Google AdSense — in <head> as required by Google */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496095498271142"
-          crossOrigin="anonymous"
-        />
+        {/* Google AdSense — intentionally removed from <head> to avoid hydration
+            mismatch; loaded via Next.js Script below instead */}
       </head>
 
       <body className="antialiased">
@@ -263,6 +260,14 @@ export default function RootLayout({ children }) {
         </header>
 
         <main className="pt-16">{children}</main>
+
+        {/* Google AdSense — loaded after page is interactive to avoid hydration mismatch */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9496095498271142"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
 
         <footer className="border-t border-border py-8 mt-24">
           <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">

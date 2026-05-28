@@ -97,10 +97,127 @@ public/
     └── redis-flow.png
 ```
 
-**Tips:**
-- Use descriptive alt text (helps SEO and accessibility)
+**SEO tips:**
+- Use **descriptive alt text** — 10–20 words explaining what the diagram shows. This is what Google indexes.
+- Name files using the search query you want to rank for, e.g. `redis-cluster-hash-slots-diagram.png` not `img1.png`
+- Use hyphens, not spaces in filenames
 - Supported formats: PNG, JPG, WebP, SVG, GIF
-- Images are automatically styled with rounded corners and border
+- Images are automatically wrapped in `<figure><figcaption>` — the alt text becomes the visible caption
+- A fullscreen expand button appears automatically on each image — no extra work needed
+
+---
+
+## Mermaid Diagrams
+
+Write architecture and flow diagrams directly in the post using Mermaid syntax. They render as interactive SVG in the browser with a fullscreen expand button.
+
+````markdown
+```mermaid
+flowchart LR
+    A([Client]) --> B[Gateway]
+    B --> C[(Redis)]
+```
+````
+
+### Diagram Types
+
+**Flowchart (most common):**
+
+````markdown
+```mermaid
+flowchart TD
+    A[Start] --> B{Decision?}
+    B -->|Yes| C[Do this]
+    B -->|No| D[Do that]
+```
+````
+
+**Sequence diagram:**
+
+````markdown
+```mermaid
+sequenceDiagram
+    Client->>Gateway: Request
+    Gateway->>Redis: EVAL Lua
+    Redis-->>Gateway: allowed=1
+    Gateway-->>Client: 200 OK
+```
+````
+
+### Node Shapes
+
+```
+[Rectangle]        — process / component
+([Rounded])        — start / end / client
+{Diamond}          — decision
+[(Cylinder)]       — database / Redis
+((Circle))         — connector dot
+```
+
+### Colors (semantic conventions used in this blog)
+
+Apply colors with `style` declarations at the bottom of the diagram:
+
+```mermaid
+flowchart LR
+    GW[Gateway]
+    RD[(Redis)]
+    ERR[Error]
+
+    style GW  fill:#1e3a5f,stroke:#3b82f6,color:#bfdbfe   %%  blue  — gateway/service
+    style RD  fill:#1a2e1a,stroke:#22c55e,color:#bbf7d0   %%  green — Redis/data store
+    style ERR fill:#3b1f1f,stroke:#ef4444,color:#fca5a5   %%  red   — error/rejection
+```
+
+| Color | Use for |
+|---|---|
+| Blue `#1e3a5f` | Gateways, services, active components |
+| Green `#1a2e1a` | Redis, databases, storage |
+| Red `#3b1f1f` | Errors, rejections, problems |
+| Amber `#3b2a0a` | Warnings, config services, caution |
+| Dark `#111` | Replicas, secondary/passive nodes |
+
+### Subgraphs (grouping nodes)
+
+````markdown
+```mermaid
+flowchart LR
+    subgraph GWS["API Gateway Cluster"]
+        direction TB
+        GW1[Gateway 1]
+        GW2[Gateway 2]
+    end
+    GWS --> RD[(Redis)]
+```
+````
+
+**Important:** The subgraph ID and any node ID inside it must be **different**. Using the same name causes a parse error:
+
+```
+subgraph S1["Shard 1"]    ✓  subgraph ID is S1
+    S1[Primary]            ✗  node ID S1 conflicts — use P1 instead
+    P1[Primary]            ✓
+end
+```
+
+### Large Diagrams
+
+Diagrams with 5+ subgraphs are automatically given extra height. For complex system architectures, keep the number of explicit cross-connections low — connect subgraph groups rather than individual nodes inside them to avoid a spaghetti of lines.
+
+### Light/Dark Mode
+
+Diagrams automatically re-render when the theme is toggled. Custom `style` colors are remapped to light-friendly equivalents automatically — you only need to write the dark-mode colors.
+
+### When to Use an Image vs Mermaid
+
+| Use a PNG image | Use Mermaid |
+|---|---|
+| You have an exported diagram from a design tool | You're writing the diagram from scratch |
+| The diagram needs to rank in Google Images | Interactive/zoomable is more important than SEO |
+| Pixel-perfect visual detail matters | The structure/logic is more important than aesthetics |
+| The diagram won't change | You'll iterate on the diagram over time |
+
+For SEO-critical diagrams (architecture overviews, key concepts), prefer PNG with descriptive alt text. Use [mermaid.live](https://mermaid.live) to export your Mermaid diagram as PNG.
 
 ## Videos
 
@@ -197,13 +314,15 @@ Thanks for reading! Check out the [source code](https://github.com/saurava69/cha
 After creating your post:
 
 1. Save the `.mdx` file in `content/blog/`
-2. Run `npm run build` to verify it renders correctly
-3. Push to GitHub  the sitemap updates automatically
+2. `git commit` — the pre-commit hook **automatically** regenerates `sitemap.xml` and `search-index.json` and stages them
+3. Push to GitHub — `npm run build` runs on deploy, regenerating everything again for the production build
 4. The post appears on `/blog` and gets its own URL at `/blog/your-slug/`
 
 ## Notes
 
 - The Table of Contents is auto-generated from your `##` and `###` headings
 - SEO metadata (OG tags, canonical URL, BlogPosting schema) is auto-generated from your frontmatter
-- No need to edit the sitemap  it regenerates on every build
-- HTML tags (iframe, video) work directly in the markdown
+- Sitemap and search index update automatically on every `git commit` — no manual step needed
+- HTML tags (`iframe`, `video`) work directly in the markdown
+- Mermaid diagrams get a fullscreen expand button automatically
+- PNG images get a fullscreen expand button and a `<figcaption>` from the alt text automatically

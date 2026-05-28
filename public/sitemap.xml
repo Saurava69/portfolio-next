@@ -41,4 +41,10 @@
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://www.sauravx.com/blog/designing-scalable-rate-limiter/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

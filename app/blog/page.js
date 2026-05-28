@@ -4,16 +4,23 @@ import BlogList from "./BlogList";
 
 export const metadata = {
   title: "Blog | Saurav Kumar",
-  description: "Thoughts on backend engineering, distributed systems, and software development.",
+  description: "Deep dives into backend engineering, distributed systems, system design, and software development by Saurav Kumar.",
+  keywords: ["system design", "distributed systems", "backend engineering", "Redis", "software development"],
+  authors: [{ name: "Saurav Kumar", url: "https://www.sauravx.com" }],
   alternates: { canonical: "https://www.sauravx.com/blog/" },
   openGraph: {
     title: "Blog | Saurav Kumar",
-    description: "Thoughts on backend engineering, distributed systems, and software development.",
+    description: "Deep dives into backend engineering, distributed systems, system design, and software development.",
     url: "https://www.sauravx.com/blog/",
     type: "website",
     siteName: "Saurav Kumar",
   },
-  twitter: { card: "summary", title: "Blog | Saurav Kumar" },
+  twitter: {
+    card: "summary",
+    title: "Blog | Saurav Kumar",
+    description: "Deep dives into backend engineering and distributed systems.",
+    creator: "@sauravkumar25",
+  },
 };
 
 export default function Blog() {
